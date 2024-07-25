@@ -28,9 +28,23 @@
 	}
 	
 	</style>
-MGGS Housing Board : Printing Class Table
+	
+	<script>
+     function printDiv(divId) {
+     var printContents = document.getElementById(divId).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+	</script>
+	
+<div id="mg_class" >
+MGGS Housing Board : Printing Class Table : <button onclick=printDiv('mg_class') >View/Print</button>
 <br>
-<div>
 
 <table><tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr><tr>
 
@@ -46,9 +60,9 @@ MGGS Housing Board : Printing Class Table
 </table>
 <br>
 </div>
-MGGS Housing Board : Printing Teacher Table
+<div id="mg_teacher" >
+MGGS Housing Board : Printing Teacher Table : <button onclick=printDiv('mg_teacher') >View/Print</button>
 <br>
-<div>
 
 <table><tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr><tr>
 
