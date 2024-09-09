@@ -1,0 +1,33 @@
+
+#	mggs time table
+
+new	teacher	arv	Arvind G	48
+new	teacher	gir	Girisha G	48
+
+
+new	class	10	10th
+new	class	9	9th
+
+#	set	subject	class	$class	$subject 	$total_periods
+#	set	subject	teacher	$teacher	$subject 	$class
+
+set	subject	class	10	sci	6
+set	subject	class	9	sci	6
+set	subject	class	10	maths	6
+set	subject	class	9	maths	6
+
+set	subject	teacher	arv	maths	10
+set	subject	teacher	arv	maths	9
+set	subject	teacher	gir	sci	10
+set	subject	teacher	gir	sci	9
+
+#	set	bind	$class	$teacher	$subject	$day	$period
+
+#	set	bind	10	arv	maths	123456	1
+#	set	bind	9	gir	sci	123456	3
+
+
+autobind_1
+
+
+

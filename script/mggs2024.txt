@@ -1,0 +1,462 @@
+
+
+
+
+new	teacher	ptb	Pratibha G	6
+
+new	teacher	arv	Arvind G	22
+new	teacher	gri	Girisha G	48
+new	teacher	cmp	Champa G	48
+new	teacher	mdhu	Madhu  G	36
+new	teacher	anita	Anita  G	36
+new	teacher	jag	Jagdish G	36
+new	teacher	ksn	Kishan G	36
+
+new	teacher	nee	Neelam G	48
+new	teacher	pnk	Pinky  G	36
+new	teacher	urm	Urmila G	36
+
+new	teacher	jit	Jitender G	24
+new	teacher	man	Manish G	36
+new	teacher	art	Aarti  G	38
+new	teacher	div	Divya  G	36
+new	teacher	manju	Manju  G	48
+
+new	teacher	knt	Kanta  G	36
+new	teacher	mai	Mai Lal G	36
+new	teacher	rks	Rishabh  G	18
+
+
+
+new	class	10	10th
+new	class	9	9th
+new	class	8	8th
+new	class	7	7th
+new	class	6	6th
+new	class	5	5th
+new	class	4	4th
+new	class	3	3th
+new	class	2	2nd + 1st
+#	new	class	1	1st
+
+#	##########
+
+
+set	subject	teacher	pnk	null	2
+#set	subject	teacher	urm	art	2
+
+set	subject	teacher	mai	lib	10
+set	subject	teacher	mai	lib	9
+set	subject	teacher	mai	lib	8
+set	subject	teacher	mai	lib	7
+set	subject	teacher	mai	lib	6
+set	subject	teacher	mai	lib	5
+set	subject	teacher	mai	lib	4
+set	subject	teacher	mai	lib	3
+set	subject	teacher	mai	lib	2
+set	subject	teacher	mai	lib	1
+
+set	subject	teacher	gri	null	8
+set	subject	teacher	gri	null	7
+set	subject	teacher	gri	null	6
+
+
+set	subject	teacher	cmp	null	8
+set	subject	teacher	cmp	null	7
+set	subject	teacher	cmp	null	6
+
+
+
+set	subject	teacher	cmp	raj	10
+set	subject	teacher	cmp	raj	9
+
+#	######
+
+
+set	subject	teacher	arv	maths	10
+set	subject	teacher	arv	maths	9
+set	subject	teacher	arv	maths	8
+set	subject	teacher	jit	maths	7
+set	subject	teacher	rks	maths	6
+set	subject	teacher	jit	maths	5
+set	subject	teacher	jit	maths	4
+set	subject	teacher	man	maths	3
+set	subject	teacher	man	maths	2
+set	subject	teacher	man	maths	1
+					
+					
+set	subject	teacher	gri	sci	10
+set	subject	teacher	gri	sci	9
+set	subject	teacher	pnk	sci	8
+set	subject	teacher	pnk	sci	7
+set	subject	teacher	pnk	sci	6
+					
+					
+set	subject	teacher	mdhu	sst	10
+set	subject	teacher	mdhu	sst	9
+set	subject	teacher	urm	sst	8
+set	subject	teacher	mdhu	sst	7
+set	subject	teacher	urm	sst	6
+					
+					
+set	subject	teacher	cmp	eng	10
+set	subject	teacher	cmp	eng	9
+set	subject	teacher	nee	eng	8
+set	subject	teacher	nee	eng	7
+set	subject	teacher	nee	eng	6
+set	subject	teacher	div	eng	5
+set	subject	teacher	div	eng	4
+set	subject	teacher	div	eng	3
+set	subject	teacher	anita	eng	2
+set	subject	teacher	div	eng	1
+					
+					
+set	subject	teacher	ksn	hindi	10
+set	subject	teacher	ksn	hindi	9
+set	subject	teacher	ksn	hindi	8
+set	subject	teacher	ksn	hindi	7
+set	subject	teacher	anita	hindi	6
+set	subject	teacher	manju	hindi	5
+set	subject	teacher	man	hindi	4
+set	subject	teacher	manju	hindi	3
+set	subject	teacher	manju	hindi	2
+set	subject	teacher	manju	hindi	1
+					
+					
+set	subject	teacher	jag	sans	10
+set	subject	teacher	jag	sans	9
+set	subject	teacher	jag	supw	10
+set	subject	teacher	jag	supw	9
+set	subject	teacher	jag	sans	8
+set	subject	teacher	anita	sans	7
+set	subject	teacher	anita	sans	6
+					
+					
+					
+					
+set	subject	teacher	art	evs	5
+set	subject	teacher	art	evs	4
+set	subject	teacher	art	evs	3
+set	subject	teacher	ptb	evs	2
+set	subject	teacher	art	evs	1
+					
+					
+set	subject	teacher	knt	he	10
+set	subject	teacher	knt	he	9
+set	subject	teacher	knt	he	8
+set	subject	teacher	knt	he	7
+set	subject	teacher	knt	he	6
+set	subject	teacher	knt	he	5
+set	subject	teacher	knt	he	4
+set	subject	teacher	knt	he	3
+set	subject	teacher	knt	he	2
+set	subject	teacher	knt	he	1
+
+
+
+set	subject	teacher	urm	it	10
+set	subject	teacher	urm	it	9
+
+
+
+					
+set	subject	teacher	nee	he	8
+set	subject	teacher	nee	arts	8
+set	subject	teacher	nee	supw	8
+
+
+set	subject	teacher	pnk	supw	2
+					
+set	subject	teacher	mdhu	supw	7
+set	subject	teacher	mdhu	arts	7
+set	subject	teacher	mdhu	diag	7
+	
+
+#	##########
+
+
+
+
+
+set	bind	10	arv	maths	123456	1
+set	bind	9	cmp	eng	123456	1
+set	bind	8	nee	eng	123456	1
+set	bind	7	mdhu	sst	123456	1
+set	bind	6	pnk	sci	123456	1
+set	bind	5	jit	maths	123456	1
+set	bind	4	art	evs	123456	1
+set	bind	3	div	eng	123456	1
+set	bind	2	man	maths	123456	1
+set	bind	2	man	maths	123456	1
+#	set	bind	1	art	evs	123456	1
+
+set	bind	6	rks	maths	123456	2
+set	bind	null	ksn	null	123456	5
+set	bind	null	nee	null	123456	8
+set	bind	null	nee	null	123456	5
+
+
+#	set	bind	3	art	evs	123456	7
+
+set	bind	null	manju	null	123456	4
+set	bind	null	manju	null	123456	5
+
+
+set	bind	8	gri	diag	23456	8
+set	bind	8	gri	arts	1	8
+set	bind	null	gri	null	123456	6
+set	bind	null	gri	null	123456	5
+
+
+set	bind	8	ksn	hindi	123456	2
+
+
+
+set	bind	null	urm	SD	123456	1
+set	bind	null	urm	SD	123456	2
+
+set	bind	null	rks	SD	123456	3
+set	bind	null	rks	SD	123456	4
+
+
+set	subject	class	10	sci	6
+set	subject	class	10	maths	6
+set	subject	class	10	eng	6
+set	subject	class	10	sst	6
+set	subject	class	10	hindi	6
+set	subject	class	10	sans	5
+set	subject	class	10	supw	1
+
+set	subject	class	9	sci	6
+set	subject	class	9	maths	6
+set	subject	class	9	eng	6
+set	subject	class	9	sst	6
+set	subject	class	9	hindi	6
+set	subject	class	9	sans	5
+set	subject	class	9	supw	1
+					
+					
+set	subject	class	8	sci	6
+set	subject	class	8	maths	6
+set	subject	class	8	eng	6
+set	subject	class	8	sst	6
+set	subject	class	8	sans	6
+set	subject	class	8	hindi	6
+
+
+set	subject	class	7	sci	6
+set	subject	class	7	maths	6
+set	subject	class	7	eng	6
+set	subject	class	7	sst	6
+set	subject	class	7	sans	6
+set	subject	class	7	hindi	6
+
+set	subject	class	6	sci	6
+set	subject	class	6	maths	6
+set	subject	class	6	eng	6
+set	subject	class	6	sst	6
+set	subject	class	6	sans	6
+set	subject	class	6	hindi	6
+					
+					
+set	subject	class	5	maths	6
+set	subject	class	5	eng	12
+set	subject	class	5	hindi	6
+set	subject	class	5	evs	6
+
+
+set	subject	class	4	maths	6
+set	subject	class	4	eng	12
+set	subject	class	4	hindi	6
+set	subject	class	4	evs	6
+
+
+set	subject	class	3	maths	6
+set	subject	class	3	eng	12
+set	subject	class	3	hindi	6
+set	subject	class	3	evs	6					
+					
+set	subject	class	2	maths	12
+set	subject	class	2	eng	12
+set	subject	class	2	hindi	6
+set	subject	class	2	evs	6
+set	subject	class	2	he	6
+
+
+set	subject	class	1	maths	12
+set	subject	class	1	eng	12
+set	subject	class	1	hindi	6
+set	subject	class	1	evs	6
+set	subject	class	1	he	6
+
+
+
+autobind_1
+
+
+
+
+
+set	subject	class	10	sci	8
+set	subject	class	10	maths	8
+set	subject	class	10	eng	6
+set	subject	class	10	sst	8
+set	subject	class	10	sans	5
+set	subject	class	10	hindi	6
+set	subject	class	10	evs	0
+set	subject	class	10	it	2
+set	subject	class	10	he	2
+set	subject	class	10	raj	2
+set	subject	class	10	supw	1
+set	subject	class	10	arts	0
+set	subject	class	10	diag	0
+set	subject	class	10	lib	0
+
+set	subject	class	9	sci	8
+set	subject	class	9	maths	8
+set	subject	class	9	eng	6
+set	subject	class	9	sst	8
+set	subject	class	9	sans	5
+set	subject	class	9	hindi	6
+set	subject	class	9	evs	0
+set	subject	class	9	it	2
+set	subject	class	9	he	2
+set	subject	class	9	raj	2
+set	subject	class	9	supw	1
+set	subject	class	9	arts	0
+set	subject	class	9	diag	0
+set	subject	class	9	lib	0
+					
+					
+set	subject	class	8	sci	6
+set	subject	class	8	maths	6
+set	subject	class	8	eng	6
+set	subject	class	8	sst	6
+set	subject	class	8	sans	6
+set	subject	class	8	hindi	6
+set	subject	class	8	evs	0
+set	subject	class	8	it	0
+set	subject	class	8	he	2
+set	subject	class	8	raj	0
+set	subject	class	8	supw	2
+set	subject	class	8	arts	2
+set	subject	class	8	diag	5
+set	subject	class	8	lib	1
+
+
+set	subject	class	7	sci	6
+set	subject	class	7	maths	6
+set	subject	class	7	eng	6
+set	subject	class	7	sst	6
+set	subject	class	7	sans	6
+set	subject	class	7	hindi	6
+set	subject	class	7	evs	0
+set	subject	class	7	it	0
+set	subject	class	7	he	2
+set	subject	class	7	raj	0
+set	subject	class	7	supw	2
+set	subject	class	7	arts	2
+set	subject	class	7	diag	5
+set	subject	class	7	lib	1
+
+set	subject	class	6	sci	6
+set	subject	class	6	maths	6
+set	subject	class	6	eng	6
+set	subject	class	6	sst	6
+set	subject	class	6	sans	6
+set	subject	class	6	hindi	6
+set	subject	class	6	evs	0
+set	subject	class	6	it	0
+set	subject	class	6	he	2
+set	subject	class	6	raj	0
+set	subject	class	6	supw	2
+set	subject	class	6	arts	2
+set	subject	class	6	diag	5
+set	subject	class	6	lib	1
+					
+					
+set	subject	class	5	sci	0
+set	subject	class	5	maths	9
+set	subject	class	5	eng	12
+set	subject	class	5	sst	0
+set	subject	class	5	sans	0
+set	subject	class	5	hindi	6
+set	subject	class	5	evs	9
+set	subject	class	5	it	0
+set	subject	class	5	he	4
+set	subject	class	5	raj	0
+set	subject	class	5	supw	4
+set	subject	class	5	arts	4
+set	subject	class	5	diag	0
+set	subject	class	5	lib	0
+
+set	subject	class	4	sci	0
+set	subject	class	4	maths	9
+set	subject	class	4	eng	12
+set	subject	class	4	sst	0
+set	subject	class	4	sans	0
+set	subject	class	4	hindi	6
+set	subject	class	4	evs	9
+set	subject	class	4	it	0
+set	subject	class	4	he	4
+set	subject	class	4	raj	0
+set	subject	class	4	supw	4
+set	subject	class	4	arts	4
+set	subject	class	4	diag	0
+set	subject	class	4	lib	0
+
+set	subject	class	3	sci	0
+set	subject	class	3	maths	9
+set	subject	class	3	eng	12
+set	subject	class	3	sst	0
+set	subject	class	3	sans	0
+set	subject	class	3	hindi	6
+set	subject	class	3	evs	9
+set	subject	class	3	it	0
+set	subject	class	3	he	4
+set	subject	class	3	raj	0
+set	subject	class	3	supw	4
+set	subject	class	3	arts	4
+set	subject	class	3	diag	0
+set	subject	class	3	lib	0
+					
+					
+set	subject	class	2	sci	0
+set	subject	class	2	maths	12
+set	subject	class	2	eng	12
+set	subject	class	2	sst	0
+set	subject	class	2	sans	0
+set	subject	class	2	hindi	6
+set	subject	class	2	evs	6
+set	subject	class	2	it	0
+set	subject	class	2	he	6
+set	subject	class	2	raj	0
+set	subject	class	2	supw	3
+set	subject	class	2	arts	3
+set	subject	class	2	diag	0
+set	subject	class	2	lib	0
+
+
+set	subject	class	1	sci	0
+set	subject	class	2	maths	12
+set	subject	class	1	eng	12
+set	subject	class	1	sst	0
+set	subject	class	1	sans	0
+set	subject	class	1	hindi	6
+set	subject	class	1	evs	6
+set	subject	class	1	it	0
+set	subject	class	1	he	6
+set	subject	class	1	raj	0
+set	subject	class	1	supw	3
+set	subject	class	1	arts	3
+set	subject	class	1	diag	0
+set	subject	class	1	lib	0
+
+
+
+autobind_1
+autobind_any_byclass_1
+#	autobind_any_1
+
+
+
