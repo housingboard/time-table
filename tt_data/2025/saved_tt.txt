@@ -57,6 +57,12 @@ set	bind	6	jag	sans	3	3
 set	bind	6	jag	sans	4	3
 set	bind	6	jag	sans	5	3
 set	bind	6	jag	sans	6	3
+set	bind	6	rks	maths	1	6
+set	bind	6	rks	maths	2	6
+set	bind	6	rks	maths	3	6
+set	bind	6	rks	maths	4	6
+set	bind	6	rks	maths	5	6
+set	bind	6	rks	maths	6	6
 set	bind	5	art	evs	1	1
 set	bind	5	art	evs	2	1
 set	bind	5	art	evs	3	1
