@@ -70,6 +70,7 @@ set	subject	teacher	div	eng	4
 set	subject	teacher	div	eng	3
 set	subject	teacher	div	eng	2
 set	subject	teacher	div	eng	1
+set	subject	teacher	manju	eng	2
 					
 					
 set	subject	teacher	ksn	hindi	10
@@ -130,6 +131,10 @@ set	subject	teacher	pnk	supw	2
 					
 set	subject	teacher	urm	supw	7
 set	subject	teacher	urm	arts	7
-set	subject	teacher	urm	diag	7
+set	subject	teacher	nee	diag	7
 	
+set	subject	teacher	vsv	raj	10
+set	subject	teacher	vsv	raj	9
 
+
+set	subject	teacher	sum	diag	8

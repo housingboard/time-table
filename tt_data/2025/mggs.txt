@@ -1,12 +1,17 @@
 
 
-new	teacher	ptb	Pratibha G	6
+new	teacher	ptb	Pratibha G	0
 
-new	teacher	arv	Arvind G	22
-new	teacher	gri	Girisha G	48
-new	teacher	cmp	Champa G	48
-new	teacher	mdhu	Madhu  G	36
-new	teacher	anita	Anita  G	36
+new	teacher	sun	Sunil G	48
+new	teacher	vjys	Vijayshri G	48
+
+
+new	teacher	sum	Suman G	48
+new	teacher	bnd	Bindu G	40
+new	teacher	vsv	Vishvamitra G	48
+new	teacher	sha	Sharvan G	48
+
+
 new	teacher	jag	Jagdish G	36
 new	teacher	ksn	Kishan G	36
 
@@ -25,14 +30,17 @@ new	teacher	knt	Kanta  G	36
 new	teacher	rks	Rishabh  G	18
 
 
-new	teacher	sun	Sunil G	48
-new	teacher	vjys	Vijayshri G	48
 
 
-new	teacher	sum	Suman G	48
-new	teacher	bnd	Bindu G	48
-new	teacher	vsv	Vishvamitra G	48
-new	teacher	sha	Sharvan G	48
+
+
+
+new	teacher	arv	Arvind G	22
+new	teacher	gri	Girisha G	48
+new	teacher	cmp	Champa G	48
+new	teacher	mdhu	Madhu  G	36
+new	teacher	anita	Anita  G	36
+
 
 new	class	11	11th
 new	class	10	10th

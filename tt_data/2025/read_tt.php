@@ -15,8 +15,8 @@ read_cmds("confs/subjects_extra.txt");
 read_cmd("autobind_1");
 
 //read_cmd("autobind_1");
-
-read_cmd("autobind_any_byclass_1");
+read_cmd("autobind_any_1");
+//read_cmd("autobind_any_byclass_1");
 
 
 ?>

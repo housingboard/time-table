@@ -40,6 +40,11 @@ set	bind	7	ksn	hindi	3	4
 set	bind	7	ksn	hindi	4	4
 set	bind	7	ksn	hindi	5	4
 set	bind	7	ksn	hindi	6	4
+set	bind	7	nee	diag	1	8
+set	bind	7	nee	diag	2	8
+set	bind	7	nee	diag	3	8
+set	bind	7	nee	diag	4	8
+set	bind	7	nee	diag	6	8
 set	bind	6	ksn	hindi	1	2
 set	bind	6	ksn	hindi	2	2
 set	bind	6	ksn	hindi	3	2

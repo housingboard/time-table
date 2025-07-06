@@ -171,7 +171,8 @@ function bind_period($class,$teacher,$subject,$day,$period)
 	global $dmap ;
 	
 	
-	if( check_class($class,$day,$period) == 1 && ( $class=="null" || check_teacher($teacher,$day,$period) == 1 ))
+	//if( check_class($class,$day,$period) == 1 && ( $class=="null" || check_teacher($teacher,$day,$period) == 1 ))
+	if( ( check_class($class,$day,$period) == 1 || $class=="null" )  && (  check_teacher($teacher,$day,$period) == 1 ))
 	{
 		$ccode_t=find_teacher($teacher)['value'] ;
 		
@@ -1215,7 +1216,7 @@ function read_cmd($line)
 				{
 					auto_bind_1("any");
 				}
-					if($ftag[0]=="autobind_any_byclass_1")
+				if($ftag[0]=="autobind_any_byclass_1")
 				{
 					auto_bind_1("anyclass");
 				}
