@@ -19,7 +19,7 @@ new	teacher	nee	Neelam G	48
 new	teacher	pnk	Pinky  G	36
 new	teacher	urm	Urmila G	36
 
-new	teacher	jit	Jitender G	24
+new	teacher	jit	Jitender G	0
 new	teacher	man	Manish G	36
 new	teacher	art	Aarti  G	38
 new	teacher	div	Divya  G	36
