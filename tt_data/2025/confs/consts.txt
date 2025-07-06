@@ -1,0 +1,10 @@
+
+
+set	bind	null	rks	null	123456	1
+set	bind	null	rks	null	123456	2
+
+set	bind	null	rks	SD	123456	3
+set	bind	null	rks	SD	123456	4
+
+
+

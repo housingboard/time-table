@@ -1,0 +1,50 @@
+
+
+new	teacher	ptb	Pratibha G	6
+
+new	teacher	arv	Arvind G	22
+new	teacher	gri	Girisha G	48
+new	teacher	cmp	Champa G	48
+new	teacher	mdhu	Madhu  G	36
+new	teacher	anita	Anita  G	36
+new	teacher	jag	Jagdish G	36
+new	teacher	ksn	Kishan G	36
+
+new	teacher	nee	Neelam G	48
+new	teacher	pnk	Pinky  G	36
+new	teacher	urm	Urmila G	36
+
+new	teacher	jit	Jitender G	24
+new	teacher	man	Manish G	36
+new	teacher	art	Aarti  G	38
+new	teacher	div	Divya  G	36
+new	teacher	manju	Manju  G	48
+
+new	teacher	knt	Kanta  G	36
+
+new	teacher	rks	Rishabh  G	18
+
+
+new	teacher	sun	Sunil G	48
+new	teacher	vjys	Vijayshri G	48
+
+
+new	teacher	sum	Suman G	48
+new	teacher	bnd	Bindu G	48
+new	teacher	vsv	Vishvamitra G	48
+new	teacher	sha	Sharvan G	48
+
+new	class	11	11th
+new	class	10	10th
+new	class	9	9th
+new	class	8	8th
+new	class	7	7th
+new	class	6	6th
+new	class	5	5th
+new	class	4	4th
+new	class	3	3th
+new	class	2	2nd + 1st
+#	new	class	1	1st
+
+#	##########
+

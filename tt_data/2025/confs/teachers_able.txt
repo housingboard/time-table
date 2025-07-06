@@ -1,0 +1,135 @@
+
+set	subject	teacher	sun	phy	11
+set	subject	teacher	vjys	che	11
+set	subject	teacher	sun	maths	11
+set	subject	teacher	vjys	bio	11
+set	subject	teacher	vsv	eng	11
+set	subject	teacher	ksn	hindi	11
+
+set	subject	teacher	vjys	lib	10
+set	subject	teacher	vjys	lib	9
+set	subject	teacher	vjys	lib	8
+set	subject	teacher	vjys	lib	7
+set	subject	teacher	vjys	lib	6
+set	subject	teacher	vjys	lib	5
+set	subject	teacher	vjys	lib	4
+set	subject	teacher	vjys	lib	3
+set	subject	teacher	vjys	lib	2
+set	subject	teacher	vjys	lib	1
+
+
+#	######
+
+
+set	subject	teacher	bnd	maths	10
+set	subject	teacher	bnd	maths	9
+set	subject	teacher	bnd	maths	8
+
+#	set	subject	teacher	jit	maths	7
+#	set	subject	teacher	rks	maths	6
+#	set	subject	teacher	jit	maths	5
+#	set	subject	teacher	jit	maths	4
+
+set	subject	teacher	bnd	maths	7
+set	subject	teacher	bnd	maths	6
+set	subject	teacher	bnd	maths	5
+set	subject	teacher	bnd	maths	4
+
+
+set	subject	teacher	pnk	maths	7
+set	subject	teacher	pnk	maths	6
+set	subject	teacher	pnk	maths	5
+set	subject	teacher	pnk	maths	4
+
+set	subject	teacher	man	maths	3
+set	subject	teacher	man	maths	2
+set	subject	teacher	man	maths	1
+					
+					
+set	subject	teacher	sum	sci	10
+set	subject	teacher	sum	sci	9
+set	subject	teacher	pnk	sci	8
+set	subject	teacher	pnk	sci	7
+set	subject	teacher	pnk	sci	6
+					
+					
+set	subject	teacher	sha	sst	10
+set	subject	teacher	sha	sst	9
+set	subject	teacher	sha	sst	8
+set	subject	teacher	urm	sst	7
+set	subject	teacher	urm	sst	6
+					
+					
+set	subject	teacher	vsv	eng	10
+set	subject	teacher	vsv	eng	9
+set	subject	teacher	nee	eng	8
+set	subject	teacher	nee	eng	7
+set	subject	teacher	nee	eng	6
+set	subject	teacher	div	eng	5
+set	subject	teacher	div	eng	4
+set	subject	teacher	div	eng	3
+set	subject	teacher	div	eng	2
+set	subject	teacher	div	eng	1
+					
+					
+set	subject	teacher	ksn	hindi	10
+set	subject	teacher	ksn	hindi	9
+set	subject	teacher	ksn	hindi	8
+set	subject	teacher	ksn	hindi	7
+set	subject	teacher	ksn	hindi	6
+set	subject	teacher	manju	hindi	5
+set	subject	teacher	man	hindi	4
+set	subject	teacher	manju	hindi	3
+set	subject	teacher	manju	hindi	2
+set	subject	teacher	manju	hindi	1
+					
+					
+set	subject	teacher	jag	sans	10
+set	subject	teacher	jag	sans	9
+set	subject	teacher	jag	supw	10
+set	subject	teacher	jag	supw	9
+set	subject	teacher	jag	sans	8
+set	subject	teacher	jag	sans	7
+set	subject	teacher	jag	sans	6
+					
+					
+					
+					
+set	subject	teacher	art	evs	5
+set	subject	teacher	art	evs	4
+set	subject	teacher	art	evs	3
+set	subject	teacher	art	evs	2
+set	subject	teacher	art	evs	1
+					
+					
+set	subject	teacher	knt	he	10
+set	subject	teacher	knt	he	9
+set	subject	teacher	knt	he	8
+set	subject	teacher	knt	he	7
+set	subject	teacher	knt	he	6
+set	subject	teacher	knt	he	5
+set	subject	teacher	knt	he	4
+set	subject	teacher	knt	he	3
+set	subject	teacher	knt	he	2
+set	subject	teacher	knt	he	1
+
+
+
+set	subject	teacher	urm	it	10
+set	subject	teacher	urm	it	9
+
+
+
+					
+set	subject	teacher	nee	he	8
+set	subject	teacher	nee	arts	8
+set	subject	teacher	nee	supw	8
+
+
+set	subject	teacher	pnk	supw	2
+					
+set	subject	teacher	urm	supw	7
+set	subject	teacher	urm	arts	7
+set	subject	teacher	urm	diag	7
+	
+

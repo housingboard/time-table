@@ -1,0 +1,162 @@
+
+set	subject	class	11	phy	9
+set	subject	class	11	che	9
+set	subject	class	11	bio	9
+set	subject	class	11	maths	9
+
+set	subject	class	10	sci	8
+set	subject	class	10	maths	8
+set	subject	class	10	eng	6
+set	subject	class	10	sst	8
+set	subject	class	10	sans	5
+set	subject	class	10	hindi	6
+set	subject	class	10	evs	0
+set	subject	class	10	it	2
+set	subject	class	10	he	2
+set	subject	class	10	raj	2
+set	subject	class	10	supw	1
+set	subject	class	10	arts	0
+set	subject	class	10	diag	0
+set	subject	class	10	lib	0
+
+set	subject	class	9	sci	8
+set	subject	class	9	maths	8
+set	subject	class	9	eng	6
+set	subject	class	9	sst	8
+set	subject	class	9	sans	5
+set	subject	class	9	hindi	6
+set	subject	class	9	evs	0
+set	subject	class	9	it	2
+set	subject	class	9	he	2
+set	subject	class	9	raj	2
+set	subject	class	9	supw	1
+set	subject	class	9	arts	0
+set	subject	class	9	diag	0
+set	subject	class	9	lib	0
+					
+					
+set	subject	class	8	sci	6
+set	subject	class	8	maths	6
+set	subject	class	8	eng	6
+set	subject	class	8	sst	6
+set	subject	class	8	sans	6
+set	subject	class	8	hindi	6
+set	subject	class	8	evs	0
+set	subject	class	8	it	0
+set	subject	class	8	he	2
+set	subject	class	8	raj	0
+set	subject	class	8	supw	2
+set	subject	class	8	arts	2
+set	subject	class	8	diag	5
+set	subject	class	8	lib	1
+
+
+set	subject	class	7	sci	6
+set	subject	class	7	maths	6
+set	subject	class	7	eng	6
+set	subject	class	7	sst	6
+set	subject	class	7	sans	6
+set	subject	class	7	hindi	6
+set	subject	class	7	evs	0
+set	subject	class	7	it	0
+set	subject	class	7	he	2
+set	subject	class	7	raj	0
+set	subject	class	7	supw	2
+set	subject	class	7	arts	2
+set	subject	class	7	diag	5
+set	subject	class	7	lib	1
+
+set	subject	class	6	sci	6
+set	subject	class	6	maths	6
+set	subject	class	6	eng	6
+set	subject	class	6	sst	6
+set	subject	class	6	sans	6
+set	subject	class	6	hindi	6
+set	subject	class	6	evs	0
+set	subject	class	6	it	0
+set	subject	class	6	he	2
+set	subject	class	6	raj	0
+set	subject	class	6	supw	2
+set	subject	class	6	arts	2
+set	subject	class	6	diag	5
+set	subject	class	6	lib	1
+					
+					
+set	subject	class	5	sci	0
+set	subject	class	5	maths	9
+set	subject	class	5	eng	12
+set	subject	class	5	sst	0
+set	subject	class	5	sans	0
+set	subject	class	5	hindi	6
+set	subject	class	5	evs	9
+set	subject	class	5	it	0
+set	subject	class	5	he	4
+set	subject	class	5	raj	0
+set	subject	class	5	supw	4
+set	subject	class	5	arts	4
+set	subject	class	5	diag	0
+set	subject	class	5	lib	0
+
+set	subject	class	4	sci	0
+set	subject	class	4	maths	9
+set	subject	class	4	eng	12
+set	subject	class	4	sst	0
+set	subject	class	4	sans	0
+set	subject	class	4	hindi	6
+set	subject	class	4	evs	9
+set	subject	class	4	it	0
+set	subject	class	4	he	4
+set	subject	class	4	raj	0
+set	subject	class	4	supw	4
+set	subject	class	4	arts	4
+set	subject	class	4	diag	0
+set	subject	class	4	lib	0
+
+set	subject	class	3	sci	0
+set	subject	class	3	maths	9
+set	subject	class	3	eng	12
+set	subject	class	3	sst	0
+set	subject	class	3	sans	0
+set	subject	class	3	hindi	6
+set	subject	class	3	evs	9
+set	subject	class	3	it	0
+set	subject	class	3	he	4
+set	subject	class	3	raj	0
+set	subject	class	3	supw	4
+set	subject	class	3	arts	4
+set	subject	class	3	diag	0
+set	subject	class	3	lib	0
+					
+					
+set	subject	class	2	sci	0
+set	subject	class	2	maths	12
+set	subject	class	2	eng	12
+set	subject	class	2	sst	0
+set	subject	class	2	sans	0
+set	subject	class	2	hindi	6
+set	subject	class	2	evs	6
+set	subject	class	2	it	0
+set	subject	class	2	he	6
+set	subject	class	2	raj	0
+set	subject	class	2	supw	3
+set	subject	class	2	arts	3
+set	subject	class	2	diag	0
+set	subject	class	2	lib	0
+
+
+set	subject	class	1	sci	0
+set	subject	class	2	maths	12
+set	subject	class	1	eng	12
+set	subject	class	1	sst	0
+set	subject	class	1	sans	0
+set	subject	class	1	hindi	6
+set	subject	class	1	evs	6
+set	subject	class	1	it	0
+set	subject	class	1	he	6
+set	subject	class	1	raj	0
+set	subject	class	1	supw	3
+set	subject	class	1	arts	3
+set	subject	class	1	diag	0
+set	subject	class	1	lib	0
+
+

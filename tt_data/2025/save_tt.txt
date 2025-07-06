@@ -1,0 +1,2 @@
+set	bind	10	axa	ax	1	1
+set	bind	10	a	v	3	2

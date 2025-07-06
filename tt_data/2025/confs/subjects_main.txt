@@ -1,0 +1,80 @@
+
+
+set	subject	class	11	phy	6
+set	subject	class	11	che	6
+set	subject	class	11	bio	6
+set	subject	class	11	maths	6
+set	subject	class	11	hindi	6
+set	subject	class	11	eng	6
+
+set	subject	class	10	sci	6
+set	subject	class	10	maths	6
+set	subject	class	10	eng	6
+set	subject	class	10	sst	6
+set	subject	class	10	hindi	6
+set	subject	class	10	sans	5
+set	subject	class	10	supw	1
+
+set	subject	class	9	sci	6
+set	subject	class	9	maths	6
+set	subject	class	9	eng	6
+set	subject	class	9	sst	6
+set	subject	class	9	hindi	6
+set	subject	class	9	sans	5
+set	subject	class	9	supw	1
+					
+					
+set	subject	class	8	sci	6
+set	subject	class	8	maths	6
+set	subject	class	8	eng	6
+set	subject	class	8	sst	6
+set	subject	class	8	sans	6
+set	subject	class	8	hindi	6
+
+
+set	subject	class	7	sci	6
+set	subject	class	7	maths	6
+set	subject	class	7	eng	6
+set	subject	class	7	sst	6
+set	subject	class	7	sans	6
+set	subject	class	7	hindi	6
+
+set	subject	class	6	sci	6
+set	subject	class	6	maths	6
+set	subject	class	6	eng	6
+set	subject	class	6	sst	6
+set	subject	class	6	sans	6
+set	subject	class	6	hindi	6
+					
+					
+set	subject	class	5	maths	6
+set	subject	class	5	eng	12
+set	subject	class	5	hindi	6
+set	subject	class	5	evs	6
+
+
+set	subject	class	4	maths	6
+set	subject	class	4	eng	12
+set	subject	class	4	hindi	6
+set	subject	class	4	evs	6
+
+
+set	subject	class	3	maths	6
+set	subject	class	3	eng	12
+set	subject	class	3	hindi	6
+set	subject	class	3	evs	6					
+					
+set	subject	class	2	maths	12
+set	subject	class	2	eng	12
+set	subject	class	2	hindi	6
+set	subject	class	2	evs	6
+set	subject	class	2	he	6
+
+
+set	subject	class	1	maths	12
+set	subject	class	1	eng	12
+set	subject	class	1	hindi	6
+set	subject	class	1	evs	6
+set	subject	class	1	he	6
+
+
