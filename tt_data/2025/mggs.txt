@@ -50,7 +50,7 @@ new	class	7	7th
 new	class	6	6th
 new	class	5	5th
 new	class	4	4th
-new	class	3	3th
+new	class	3	3rd
 new	class	2	2nd + 1st
 #	new	class	1	1st
 
