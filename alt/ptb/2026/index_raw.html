@@ -1,0 +1,514 @@
+<style>
+	
+	table
+	{
+		border:1px solid black ;
+		border-collapse: collapse ;
+		
+	}
+	th,td
+	{
+		border:1px solid black ;
+		border-collapse: collapse ;
+		padding: 5px;
+		text-align: center ;
+	}
+	table {
+	  page-break-inside: avoid;
+	  break-inside: avoid;      
+	}
+
+	tr, td, th {
+	  page-break-inside: avoid; 
+	  break-inside: avoid;
+	}
+	.printx{
+	  page-break-inside: avoid; 
+	  break-inside: avoid;
+	}
+	.td_pp
+	{
+		width:100px;
+	}
+	.td_pp2
+	{
+		width : 130 ;
+	}
+	tr:nth-child(even)
+	{
+		background-color: #dddddd ;
+	}
+	.tt_edit_one_subject
+	{
+		width:50%;
+	}
+	.tt_edit_one_teacher
+	{
+		width:100%;
+	}
+	.tt_edit_one_eclasses
+	{
+		width:50%;
+	}
+	
+	</style>
+	
+	<script>
+     function printDiv(divId) {
+     var printContents = document.getElementById(divId).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+	</script>
+	
+
+
+<script>
+
+function save_json_data()
+{
+	
+	var class_info={};
+	class_info['total']=9;
+class_info[0]="12";
+class_info[1]="11";
+class_info[2]="10";
+class_info[3]="9";
+class_info[4]="8";
+class_info[5]="7";
+class_info[6]="6";
+class_info[7]="5";
+class_info[8]="3";
+	
+	var obj={};
+	obj['total']=0;
+	var errored=0;
+	for(var i=0; i < class_info['total'] ; i++)
+	{
+		//obj.total++;
+		for(var k=1; k <= 8 ; k++)
+		for(var j=1; j <= 6 ; j++)
+		{
+			
+			var ele_subject = document.getElementById("tt_edit_one_subject_"+class_info[i]+"_"+k+"_"+j);
+			var ele_teacher = document.getElementById("tt_edit_one_teacher_"+class_info[i]+"_"+k+"_"+j);
+			var ele_eclasses = document.getElementById("tt_edit_one_eclasses_"+class_info[i]+"_"+k+"_"+j);
+			if(ele_subject.value && ele_teacher.value && ele_eclasses.value)
+			{
+				obj[obj['total']]={};
+				//obj[obj['total']]['value']=class_info[i]+"_"+ele.value+"_"+k+"_"+j;
+				
+				obj[obj['total']]['class']=class_info[i];
+				obj[obj['total']]['classes']=ele_eclasses.value;
+				
+				obj[obj['total']]['day']=j;
+				obj[obj['total']]['period']=k;
+				obj[obj['total']]['subject']=ele_subject.value;
+				obj[obj['total']]['teacher']=ele_teacher.value;
+				
+				obj['total']++;
+			}
+			
+			if(ele_subject.value || ele_teacher.value)
+			if(ele_subject.value && ele_teacher.value)	
+			{
+			}
+			else
+			{
+				if( errored==0)
+					alert("data err class:"+class_info[i]+" period:"+k+" day:"+j);
+				 errored=1;
+			}
+		}
+	}
+
+	var json_string=JSON.stringify(obj);
+	
+	fetch('save_tt.php', {
+	  method: 'POST',
+	  headers: {
+	    'Content-Type': 'application/json'
+	  },
+	  body: json_string
+	})
+	.then(response => response.text()) // or response.json() if the server returns JSON
+	.then(data => {
+	  console.log('Server response:', data);
+	})
+	.catch(error => {
+	  console.error('Error:', error);
+	});
+
+
+}
+
+
+function copy_tt_data_single(w_class, w_period)
+{
+	//console.log(w_class+":"+w_period);
+	//return;
+	var class_info={};
+	class_info['total']=9;
+class_info[0]="12";
+class_info[1]="11";
+class_info[2]="10";
+class_info[3]="9";
+class_info[4]="8";
+class_info[5]="7";
+class_info[6]="6";
+class_info[7]="5";
+class_info[8]="3";
+	
+	var obj={};
+	obj['total']=0;
+	var errored=0;
+	//for(var i=0; i < class_info['total'] ; i++)
+	//{
+		//obj.total++;
+		//for(var k=1; k <= 8 ; k++)
+		
+		//var ele_subject = document.getElementById("tt_edit_one_subject_"+w_class+"_"+w_period+"_"+1);
+		//var ele_teacher = document.getElementById("tt_edit_one_teacher_"+w_class+"_"+w_period+"_"+1);
+		
+		var cp_subject="";
+		var cp_teacher="";
+		var cp_eclasses="";
+		//if(ele_subject && ele_teacher && ele_subject.value && ele_teacher.value)
+		//{
+		//	cp_subject=ele_subject.value;
+		//	cp_teacher=ele_teacher.value;
+		//}
+		for(var j=1; j <= 6 ; j++)
+		{
+			var ele_subject = document.getElementById("tt_edit_one_subject_"+w_class+"_"+w_period+"_"+j);
+			var ele_teacher = document.getElementById("tt_edit_one_teacher_"+w_class+"_"+w_period+"_"+j);
+			var ele_eclasses = document.getElementById("tt_edit_one_eclasses_"+w_class+"_"+w_period+"_"+j);
+			
+			if(ele_subject.value != "" || ele_teacher.value != "" )
+			{
+				cp_subject=ele_subject.value;
+				cp_teacher=ele_teacher.value;
+				cp_eclasses=ele_eclasses.value;
+			}
+			ele_subject.value=cp_subject;
+			ele_teacher.value=cp_teacher;
+			ele_eclasses.value=cp_eclasses;
+			
+		}
+		/*
+		if(ele_subject.value && ele_teacher.value)
+		for(var j=1; j <= 6 ; j++)
+		{
+			//document.getElementById("tt_edit_one_subject_"+class_info[w_class]+"_"+w_period+"_"+j)="khdka";
+			
+		}
+		*/
+	//}
+
+
+}
+function clean_tt_data_single(w_class, w_period)
+{
+	//console.log(w_class+":"+w_period);
+	//return;
+	var class_info={};
+	class_info['total']=9;
+class_info[0]="12";
+class_info[1]="11";
+class_info[2]="10";
+class_info[3]="9";
+class_info[4]="8";
+class_info[5]="7";
+class_info[6]="6";
+class_info[7]="5";
+class_info[8]="3";
+	
+	var obj={};
+	obj['total']=0;
+	var errored=0;
+	//for(var i=0; i < class_info['total'] ; i++)
+	//{
+		//obj.total++;
+		//for(var k=1; k <= 8 ; k++)
+		
+		
+		var cp_subject="";
+		var cp_teacher="";
+		
+		for(var j=1; j <= 6 ; j++)
+		{
+			document.getElementById("tt_edit_one_subject_"+w_class+"_"+w_period+"_"+j).value=cp_subject;
+			document.getElementById("tt_edit_one_teacher_"+w_class+"_"+w_period+"_"+j).value=cp_teacher;
+			document.getElementById("tt_edit_one_eclasses_"+w_class+"_"+w_period+"_"+j).value=w_class;
+			
+		}
+		/*
+		if(ele_subject.value && ele_teacher.value)
+		for(var j=1; j <= 6 ; j++)
+		{
+			//document.getElementById("tt_edit_one_subject_"+class_info[w_class]+"_"+w_period+"_"+j)="khdka";
+			
+		}
+		*/
+	//}
+
+
+}
+function clean_tt_data()
+{
+	//console.log(w_class+":"+w_period);
+	//return;
+	var class_info={};
+	class_info['total']=9;
+class_info[0]="12";
+class_info[1]="11";
+class_info[2]="10";
+class_info[3]="9";
+class_info[4]="8";
+class_info[5]="7";
+class_info[6]="6";
+class_info[7]="5";
+class_info[8]="3";
+	
+	var obj={};
+	obj['total']=0;
+	var errored=0;
+	for(var i=0; i < class_info['total'] ; i++)
+	{
+		//obj.total++;
+		for(var k=1; k <= 8 ; k++)
+		for(var j=1; j <= 6 ; j++)
+		{
+			document.getElementById("tt_edit_one_subject_"+class_info[i]+"_"+k+"_"+j).value="";
+			document.getElementById("tt_edit_one_teacher_"+class_info[i]+"_"+k+"_"+j).value="";
+			document.getElementById("tt_edit_one_eclasses_"+class_info[i]+"_"+k+"_"+j).value=class_info[i];
+			
+		}
+	}
+
+
+}
+
+</script>
+
+
+Printing Class Table
+<br>
+Class : 12th	<table>
+<tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><th>Mon</th><td class="td_pp">geo(pri)</td><td class="td_pp">pol(pri)</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">eng(swa)</td><td>---</td><td class="td_pp">hindi(shd)</td><td class="td_pp">geo(pri)</td><td class="td_pp">pol(pri)</td><td class="td_pp">hin-sa(pri)</td></tr>
+<tr><th>Tue</th><td class="td_pp">geo(pri)</td><td class="td_pp">pol(pri)</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">eng(swa)</td><td>---</td><td class="td_pp">hindi(shd)</td><td class="td_pp">geo(pri)</td><td class="td_pp">pol(pri)</td><td class="td_pp">hin-sa(pri)</td></tr>
+<tr><th>Wed</th><td class="td_pp">geo(pri)</td><td class="td_pp">pol(pri)</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">eng(swa)</td><td>---</td><td class="td_pp">hindi(shd)</td><td class="td_pp">geo(pri)</td><td class="td_pp">pol(pri)</td><td class="td_pp">hin-sa(pri)</td></tr>
+<tr><th>Thu</th><td class="td_pp">geo(pri)</td><td class="td_pp">pol(pri)</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">eng(swa)</td><td>---</td><td class="td_pp">hindi(shd)</td><td class="td_pp">geo(pri)</td><td class="td_pp">pol(pri)</td><td class="td_pp">raj(shd)</td></tr>
+<tr><th>Fri</th><td class="td_pp">geo(pri)</td><td class="td_pp">pol(pri)</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">eng(swa)</td><td>---</td><td class="td_pp">hindi(shd)</td><td class="td_pp">geo(pri)</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">raj(shd)</td></tr>
+<tr><th>Sat</th><td class="td_pp">geo(pri)</td><td class="td_pp">pol(pri)</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">eng(swa)</td><td>---</td><td class="td_pp">hindi(shd)</td><td class="td_pp">pol(pri)</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">raj(shd)</td></tr>
+</table><br>
+Class : 11th	<table>
+<tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><th>Mon</th><td class="td_pp">eng(swa)</td><td class="td_pp">pol(snt)</td><td class="td_pp">hindi(shd)</td><td class="td_pp">geo(pri)</td><td>---</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">raj(anu)</td><td class="td_pp">supw(nsrt)</td><td class="td_pp">pol(snt)</td></tr>
+<tr><th>Tue</th><td class="td_pp">eng(swa)</td><td class="td_pp">pol(snt)</td><td class="td_pp">hindi(shd)</td><td class="td_pp">geo(pri)</td><td>---</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">supw(anu)</td><td class="td_pp">supw(nsrt)</td><td class="td_pp">pol(snt)</td></tr>
+<tr><th>Wed</th><td class="td_pp">eng(swa)</td><td class="td_pp">pol(snt)</td><td class="td_pp">hindi(shd)</td><td class="td_pp">geo(pri)</td><td>---</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">geo(shd)</td><td class="td_pp">hin-sa(shd)</td><td class="td_pp">pol(snt)</td></tr>
+<tr><th>Thu</th><td class="td_pp">eng(swa)</td><td class="td_pp">pol(snt)</td><td class="td_pp">hindi(shd)</td><td class="td_pp">geo(pri)</td><td>---</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">pol(shd)</td><td class="td_pp">hin-sa(shd)</td><td class="td_pp">geo(pri)</td></tr>
+<tr><th>Fri</th><td class="td_pp">eng(swa)</td><td class="td_pp">pol(snt)</td><td class="td_pp">hindi(shd)</td><td class="td_pp">geo(pri)</td><td>---</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">hin-sa(shd)</td><td class="td_pp">raj(shd)</td><td class="td_pp">geo(pri)</td></tr>
+<tr><th>Sat</th><td class="td_pp">eng(swa)</td><td class="td_pp">pol(snt)</td><td class="td_pp">hindi(shd)</td><td class="td_pp">geo(pri)</td><td>---</td><td class="td_pp">hin-sa(pri)</td><td class="td_pp">hin-sa(shd)</td><td class="td_pp">raj(shd)</td><td class="td_pp">geo(pri)</td></tr>
+</table><br>
+Class : 10th	<table>
+<tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><th>Mon</th><td class="td_pp">maths(anu)</td><td class="td_pp">sci(shd)</td><td class="td_pp">eng(swa)</td><td class="td_pp">sst(msm)</td><td>---</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sans(snt)</td><td class="td_pp">sci(shd)</td><td class="td_pp">it(shd)</td></tr>
+<tr><th>Tue</th><td class="td_pp">maths(anu)</td><td class="td_pp">sci(shd)</td><td class="td_pp">eng(swa)</td><td class="td_pp">sst(msm)</td><td>---</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sans(snt)</td><td class="td_pp">sci(shd)</td><td class="td_pp">it(shd)</td></tr>
+<tr><th>Wed</th><td class="td_pp">maths(anu)</td><td class="td_pp">sci(shd)</td><td class="td_pp">eng(swa)</td><td class="td_pp">sst(msm)</td><td>---</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sans(snt)</td><td class="td_pp">maths(anu)</td><td class="td_pp">he(shd)</td></tr>
+<tr><th>Thu</th><td class="td_pp">maths(anu)</td><td class="td_pp">sci(shd)</td><td class="td_pp">eng(swa)</td><td class="td_pp">sst(msm)</td><td>---</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sans(snt)</td><td class="td_pp">maths(anu)</td><td class="td_pp">he(snt)</td></tr>
+<tr><th>Fri</th><td class="td_pp">maths(anu)</td><td class="td_pp">sci(shd)</td><td class="td_pp">eng(swa)</td><td class="td_pp">sst(msm)</td><td>---</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sans(snt)</td><td class="td_pp">sst(anu)</td><td class="td_pp">raj(snt)</td></tr>
+<tr><th>Sat</th><td class="td_pp">maths(anu)</td><td class="td_pp">sci(shd)</td><td class="td_pp">eng(swa)</td><td class="td_pp">sst(msm)</td><td>---</td><td class="td_pp">hindi(msm)</td><td class="td_pp">supw(snt)</td><td class="td_pp">sst(anu)</td><td class="td_pp">raj(snt)</td></tr>
+</table><br>
+Class : 9th	<table>
+<tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><th>Mon</th><td class="td_pp">sst(snt)</td><td class="td_pp">maths(anu)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sci(shd)</td><td>---</td><td class="td_pp">eng(swa)</td><td class="td_pp">sci(shd)</td><td class="td_pp">sans(snt)</td><td class="td_pp">it(swa)</td></tr>
+<tr><th>Tue</th><td class="td_pp">sst(snt)</td><td class="td_pp">maths(anu)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sci(shd)</td><td>---</td><td class="td_pp">eng(swa)</td><td class="td_pp">sci(shd)</td><td class="td_pp">sans(snt)</td><td class="td_pp">it(swa)</td></tr>
+<tr><th>Wed</th><td class="td_pp">sst(snt)</td><td class="td_pp">maths(anu)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sci(shd)</td><td>---</td><td class="td_pp">eng(swa)</td><td class="td_pp">maths(anu)</td><td class="td_pp">sans(snt)</td><td class="td_pp">he(swa)</td></tr>
+<tr><th>Thu</th><td class="td_pp">sst(snt)</td><td class="td_pp">maths(anu)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sci(shd)</td><td>---</td><td class="td_pp">eng(swa)</td><td class="td_pp">maths(anu)</td><td class="td_pp">sans(snt)</td><td class="td_pp">he(swa)</td></tr>
+<tr><th>Fri</th><td class="td_pp">sst(snt)</td><td class="td_pp">maths(anu)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sci(shd)</td><td>---</td><td class="td_pp">eng(swa)</td><td class="td_pp">sst(anu)</td><td class="td_pp">sans(snt)</td><td class="td_pp">raj(swa)</td></tr>
+<tr><th>Sat</th><td class="td_pp">sst(snt)</td><td class="td_pp">maths(anu)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sci(shd)</td><td>---</td><td class="td_pp">eng(swa)</td><td class="td_pp">sst(anu)</td><td class="td_pp">supw(snt)</td><td class="td_pp">raj(swa)</td></tr>
+</table><br>
+Class : 8th	<table>
+<tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><th>Mon</th><td class="td_pp">maths(bnv)</td><td class="td_pp">sci(bnv)</td><td class="td_pp">sst(anu)</td><td class="td_pp">sans(snt)</td><td>---</td><td class="td_pp">supw(ptb)</td><td class="td_pp">eng(swa)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">diag(anu)</td></tr>
+<tr><th>Tue</th><td class="td_pp">maths(bnv)</td><td class="td_pp">sci(bnv)</td><td class="td_pp">sst(anu)</td><td class="td_pp">sans(snt)</td><td>---</td><td class="td_pp">supw(ptb)</td><td class="td_pp">eng(swa)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">diag(anu)</td></tr>
+<tr><th>Wed</th><td class="td_pp">maths(bnv)</td><td class="td_pp">sci(bnv)</td><td class="td_pp">sst(anu)</td><td class="td_pp">sans(snt)</td><td>---</td><td class="td_pp">arts(ptb)</td><td class="td_pp">eng(swa)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">diag(anu)</td></tr>
+<tr><th>Thu</th><td class="td_pp">maths(bnv)</td><td class="td_pp">sci(bnv)</td><td class="td_pp">sst(anu)</td><td class="td_pp">sans(snt)</td><td>---</td><td class="td_pp">arts(ptb)</td><td class="td_pp">eng(swa)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">diag(anu)</td></tr>
+<tr><th>Fri</th><td class="td_pp">maths(bnv)</td><td class="td_pp">sci(bnv)</td><td class="td_pp">sst(anu)</td><td class="td_pp">sans(snt)</td><td>---</td><td class="td_pp">he(bnv)</td><td class="td_pp">eng(swa)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">diag(anu)</td></tr>
+<tr><th>Sat</th><td class="td_pp">maths(bnv)</td><td class="td_pp">sci(bnv)</td><td class="td_pp">sst(anu)</td><td class="td_pp">sans(snt)</td><td>---</td><td class="td_pp">he(bnv)</td><td class="td_pp">eng(swa)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">lib(anu)</td></tr>
+</table><br>
+Class : 7th	<table>
+<tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><th>Mon</th><td class="td_pp">sci(shd)</td><td class="td_pp">eng(swa)</td><td class="td_pp">maths(bnv)</td><td class="td_pp">supw(ptb)</td><td>---</td><td class="td_pp">sans(snt)</td><td class="td_pp">sst(msm)</td><td class="td_pp">he(bnv)</td><td class="td_pp">hindi(msm)</td></tr>
+<tr><th>Tue</th><td class="td_pp">sci(shd)</td><td class="td_pp">eng(swa)</td><td class="td_pp">maths(bnv)</td><td class="td_pp">supw(ptb)</td><td>---</td><td class="td_pp">sans(snt)</td><td class="td_pp">sst(msm)</td><td class="td_pp">he(bnv)</td><td class="td_pp">hindi(msm)</td></tr>
+<tr><th>Wed</th><td class="td_pp">sci(shd)</td><td class="td_pp">eng(swa)</td><td class="td_pp">maths(bnv)</td><td class="td_pp">arts(ptb)</td><td>---</td><td class="td_pp">sans(snt)</td><td class="td_pp">sst(msm)</td><td class="td_pp">diag(bnv)</td><td class="td_pp">hindi(msm)</td></tr>
+<tr><th>Thu</th><td class="td_pp">sci(shd)</td><td class="td_pp">eng(swa)</td><td class="td_pp">maths(bnv)</td><td class="td_pp">arts(ptb)</td><td>---</td><td class="td_pp">sans(snt)</td><td class="td_pp">sst(msm)</td><td class="td_pp">diag(bnv)</td><td class="td_pp">hindi(msm)</td></tr>
+<tr><th>Fri</th><td class="td_pp">sci(shd)</td><td class="td_pp">eng(swa)</td><td class="td_pp">maths(bnv)</td><td class="td_pp">diag(nsrt)</td><td>---</td><td class="td_pp">sans(snt)</td><td class="td_pp">sst(msm)</td><td class="td_pp">diag(bnv)</td><td class="td_pp">hindi(msm)</td></tr>
+<tr><th>Sat</th><td class="td_pp">sci(shd)</td><td class="td_pp">eng(swa)</td><td class="td_pp">maths(bnv)</td><td class="td_pp">lib(nsrt)</td><td>---</td><td class="td_pp">sans(snt)</td><td class="td_pp">sst(msm)</td><td class="td_pp">diag(bnv)</td><td class="td_pp">hindi(msm)</td></tr>
+</table><br>
+Class : 6th	<table>
+<tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><th>Mon</th><td class="td_pp">sst(msm)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sans(snt)</td><td class="td_pp">sci(bnv)</td><td>---</td><td class="td_pp">maths(anu)</td><td class="td_pp">supw(ptb)</td><td class="td_pp">eng(swa)</td><td class="td_pp">diag(bnv)</td></tr>
+<tr><th>Tue</th><td class="td_pp">sst(msm)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sans(snt)</td><td class="td_pp">sci(bnv)</td><td>---</td><td class="td_pp">maths(anu)</td><td class="td_pp">supw(ptb)</td><td class="td_pp">eng(swa)</td><td class="td_pp">diag(bnv)</td></tr>
+<tr><th>Wed</th><td class="td_pp">sst(msm)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sans(snt)</td><td class="td_pp">sci(bnv)</td><td>---</td><td class="td_pp">maths(anu)</td><td class="td_pp">arts(ptb)</td><td class="td_pp">eng(swa)</td><td class="td_pp">diag(bnv)</td></tr>
+<tr><th>Thu</th><td class="td_pp">sst(msm)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sans(snt)</td><td class="td_pp">sci(bnv)</td><td>---</td><td class="td_pp">maths(anu)</td><td class="td_pp">arts(ptb)</td><td class="td_pp">eng(swa)</td><td class="td_pp">diag(bnv)</td></tr>
+<tr><th>Fri</th><td class="td_pp">sst(msm)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sans(snt)</td><td class="td_pp">sci(bnv)</td><td>---</td><td class="td_pp">maths(anu)</td><td class="td_pp">he(bnv)</td><td class="td_pp">eng(swa)</td><td class="td_pp">diag(bnv)</td></tr>
+<tr><th>Sat</th><td class="td_pp">sst(msm)</td><td class="td_pp">hindi(msm)</td><td class="td_pp">sans(snt)</td><td class="td_pp">sci(bnv)</td><td>---</td><td class="td_pp">maths(anu)</td><td class="td_pp">he(bnv)</td><td class="td_pp">eng(swa)</td><td class="td_pp">lib(bnv)</td></tr>
+</table><br>
+Class : 5+4	<table>
+<tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><th>Mon</th><td class="td_pp">env(sbnm)</td><td class="td_pp">eng(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">hindi(sbnm)</td><td>---</td><td class="td_pp">evs(sbnm)</td><td class="td_pp">maths(nsrt)</td><td class="td_pp">supw(ptb)</td><td class="td_pp">evs(sbnm)</td></tr>
+<tr><th>Tue</th><td class="td_pp">env(sbnm)</td><td class="td_pp">eng(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">hindi(sbnm)</td><td>---</td><td class="td_pp">evs(sbnm)</td><td class="td_pp">maths(nsrt)</td><td class="td_pp">supw(ptb)</td><td class="td_pp">evs(sbnm)</td></tr>
+<tr><th>Wed</th><td class="td_pp">env(sbnm)</td><td class="td_pp">eng(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">hindi(sbnm)</td><td>---</td><td class="td_pp">evs(sbnm)</td><td class="td_pp">maths(nsrt)</td><td class="td_pp">arts(ptb)</td><td class="td_pp">evs(sbnm)</td></tr>
+<tr><th>Thu</th><td class="td_pp">env(sbnm)</td><td class="td_pp">eng(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">hindi(sbnm)</td><td>---</td><td class="td_pp">evs(sbnm)</td><td class="td_pp">maths(nsrt)</td><td class="td_pp">arts(ptb)</td><td class="td_pp">maths(nsrt)</td></tr>
+<tr><th>Fri</th><td class="td_pp">env(sbnm)</td><td class="td_pp">eng(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">hindi(sbnm)</td><td>---</td><td class="td_pp">evs(sbnm)</td><td class="td_pp">supw(ptb)</td><td class="td_pp">arts(ptb)</td><td class="td_pp">maths(nsrt)</td></tr>
+<tr><th>Sat</th><td class="td_pp">env(sbnm)</td><td class="td_pp">eng(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">hindi(sbnm)</td><td>---</td><td class="td_pp">evs(sbnm)</td><td class="td_pp">supw(ptb)</td><td class="td_pp">arts(ptb)</td><td class="td_pp">maths(nsrt)</td></tr>
+</table><br>
+Class : 3+2+1	<table>
+<tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><th>Mon</th><td class="td_pp">eng(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">maths(nsrt)</td><td class="td_pp">maths(nsrt)</td><td>---</td><td class="td_pp">he(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">evs(sbnm)</td><td class="td_pp">arts(nsrt)</td></tr>
+<tr><th>Tue</th><td class="td_pp">eng(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">maths(nsrt)</td><td class="td_pp">maths(nsrt)</td><td>---</td><td class="td_pp">he(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">evs(sbnm)</td><td class="td_pp">arts(nsrt)</td></tr>
+<tr><th>Wed</th><td class="td_pp">eng(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">maths(nsrt)</td><td class="td_pp">maths(nsrt)</td><td>---</td><td class="td_pp">he(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">evs(sbnm)</td><td class="td_pp">arts(nsrt)</td></tr>
+<tr><th>Thu</th><td class="td_pp">eng(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">maths(nsrt)</td><td class="td_pp">he(nsrt)</td><td>---</td><td class="td_pp">arts(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">evs(sbnm)</td><td class="td_pp">evs(sbnm)</td></tr>
+<tr><th>Fri</th><td class="td_pp">eng(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">maths(nsrt)</td><td class="td_pp">supw(ptb)</td><td>---</td><td class="td_pp">supw(ptb)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">evs(sbnm)</td><td class="td_pp">evs(sbnm)</td></tr>
+<tr><th>Sat</th><td class="td_pp">eng(nsrt)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">maths(nsrt)</td><td class="td_pp">supw(ptb)</td><td>---</td><td class="td_pp">supw(ptb)</td><td class="td_pp">hindi(sbnm)</td><td class="td_pp">evs(sbnm)</td><td class="td_pp">evs(sbnm)</td></tr>
+</table><br>
+Printing Teacher Table
+<br>
+<div class="printx" >
+Teacher : Pratibha G	
+<table><tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+
+<tr><th>Mon</th><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">7(supw)</td><td>---</td><td class="td_pp">8(supw)</td><td class="td_pp">6(supw)</td><td class="td_pp">5(supw)</td><td class="td_pp">null</td></tr>
+<tr><th>Tue</th><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">7(supw)</td><td>---</td><td class="td_pp">8(supw)</td><td class="td_pp">6(supw)</td><td class="td_pp">5(supw)</td><td class="td_pp">null</td></tr>
+<tr><th>Wed</th><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">7(arts)</td><td>---</td><td class="td_pp">8(arts)</td><td class="td_pp">6(arts)</td><td class="td_pp">5(arts)</td><td class="td_pp">null</td></tr>
+<tr><th>Thu</th><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">7(arts)</td><td>---</td><td class="td_pp">8(arts)</td><td class="td_pp">6(arts)</td><td class="td_pp">5(arts)</td><td class="td_pp">null</td></tr>
+<tr><th>Fri</th><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">3(supw)</td><td>---</td><td class="td_pp">3(supw)</td><td class="td_pp">5(supw)</td><td class="td_pp">5(arts)</td><td class="td_pp">null</td></tr>
+<tr><th>Sat</th><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">3(supw)</td><td>---</td><td class="td_pp">3(supw)</td><td class="td_pp">5(supw)</td><td class="td_pp">5(arts)</td><td class="td_pp">null</td></tr>
+</table>
+<br>
+</div>
+<div class="printx" >
+Teacher : Sharda G	
+<table><tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+
+<tr><th>Mon</th><td class="td_pp">7(sci)</td><td class="td_pp">10(sci)</td><td class="td_pp">11(hindi)</td><td class="td_pp">9(sci)</td><td>---</td><td class="td_pp">12(hindi)</td><td class="td_pp">9(sci)</td><td class="td_pp">10(sci)</td><td class="td_pp">10(it)</td></tr>
+<tr><th>Tue</th><td class="td_pp">7(sci)</td><td class="td_pp">10(sci)</td><td class="td_pp">11(hindi)</td><td class="td_pp">9(sci)</td><td>---</td><td class="td_pp">12(hindi)</td><td class="td_pp">9(sci)</td><td class="td_pp">10(sci)</td><td class="td_pp">10(it)</td></tr>
+<tr><th>Wed</th><td class="td_pp">7(sci)</td><td class="td_pp">10(sci)</td><td class="td_pp">11(hindi)</td><td class="td_pp">9(sci)</td><td>---</td><td class="td_pp">12(hindi)</td><td class="td_pp">11(geo)</td><td class="td_pp">11(hin-sa)</td><td class="td_pp">10(he)</td></tr>
+<tr><th>Thu</th><td class="td_pp">7(sci)</td><td class="td_pp">10(sci)</td><td class="td_pp">11(hindi)</td><td class="td_pp">9(sci)</td><td>---</td><td class="td_pp">12(hindi)</td><td class="td_pp">11(pol)</td><td class="td_pp">11(hin-sa)</td><td class="td_pp">12(raj)</td></tr>
+<tr><th>Fri</th><td class="td_pp">7(sci)</td><td class="td_pp">10(sci)</td><td class="td_pp">11(hindi)</td><td class="td_pp">9(sci)</td><td>---</td><td class="td_pp">12(hindi)</td><td class="td_pp">11(hin-sa)</td><td class="td_pp">11(raj)</td><td class="td_pp">12(raj)</td></tr>
+<tr><th>Sat</th><td class="td_pp">7(sci)</td><td class="td_pp">10(sci)</td><td class="td_pp">11(hindi)</td><td class="td_pp">9(sci)</td><td>---</td><td class="td_pp">12(hindi)</td><td class="td_pp">11(hin-sa)</td><td class="td_pp">11(raj)</td><td class="td_pp">12(raj)</td></tr>
+</table>
+<br>
+</div>
+<div class="printx" >
+Teacher : Priyanka G	
+<table><tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+
+<tr><th>Mon</th><td class="td_pp">12(geo)</td><td class="td_pp">12(pol)</td><td class="td_pp">12(hin-sa)</td><td class="td_pp">11(geo)</td><td>---</td><td class="td_pp">11(hin-sa)</td><td class="td_pp">12(geo)</td><td class="td_pp">12(pol)</td><td class="td_pp">12(hin-sa)</td></tr>
+<tr><th>Tue</th><td class="td_pp">12(geo)</td><td class="td_pp">12(pol)</td><td class="td_pp">12(hin-sa)</td><td class="td_pp">11(geo)</td><td>---</td><td class="td_pp">11(hin-sa)</td><td class="td_pp">12(geo)</td><td class="td_pp">12(pol)</td><td class="td_pp">12(hin-sa)</td></tr>
+<tr><th>Wed</th><td class="td_pp">12(geo)</td><td class="td_pp">12(pol)</td><td class="td_pp">12(hin-sa)</td><td class="td_pp">11(geo)</td><td>---</td><td class="td_pp">11(hin-sa)</td><td class="td_pp">12(geo)</td><td class="td_pp">12(pol)</td><td class="td_pp">12(hin-sa)</td></tr>
+<tr><th>Thu</th><td class="td_pp">12(geo)</td><td class="td_pp">12(pol)</td><td class="td_pp">12(hin-sa)</td><td class="td_pp">11(geo)</td><td>---</td><td class="td_pp">11(hin-sa)</td><td class="td_pp">12(geo)</td><td class="td_pp">12(pol)</td><td class="td_pp">11(geo)</td></tr>
+<tr><th>Fri</th><td class="td_pp">12(geo)</td><td class="td_pp">12(pol)</td><td class="td_pp">12(hin-sa)</td><td class="td_pp">11(geo)</td><td>---</td><td class="td_pp">11(hin-sa)</td><td class="td_pp">12(geo)</td><td class="td_pp">12(hin-sa)</td><td class="td_pp">11(geo)</td></tr>
+<tr><th>Sat</th><td class="td_pp">12(geo)</td><td class="td_pp">12(pol)</td><td class="td_pp">12(hin-sa)</td><td class="td_pp">11(geo)</td><td>---</td><td class="td_pp">11(hin-sa)</td><td class="td_pp">12(pol)</td><td class="td_pp">12(hin-sa)</td><td class="td_pp">11(geo)</td></tr>
+</table>
+<br>
+</div>
+<div class="printx" >
+Teacher : Santosh G	
+<table><tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+
+<tr><th>Mon</th><td class="td_pp">9(sst)</td><td class="td_pp">11(pol)</td><td class="td_pp">6(sans)</td><td class="td_pp">8(sans)</td><td>---</td><td class="td_pp">7(sans)</td><td class="td_pp">10(sans)</td><td class="td_pp">9(sans)</td><td class="td_pp">11(pol)</td></tr>
+<tr><th>Tue</th><td class="td_pp">9(sst)</td><td class="td_pp">11(pol)</td><td class="td_pp">6(sans)</td><td class="td_pp">8(sans)</td><td>---</td><td class="td_pp">7(sans)</td><td class="td_pp">10(sans)</td><td class="td_pp">9(sans)</td><td class="td_pp">11(pol)</td></tr>
+<tr><th>Wed</th><td class="td_pp">9(sst)</td><td class="td_pp">11(pol)</td><td class="td_pp">6(sans)</td><td class="td_pp">8(sans)</td><td>---</td><td class="td_pp">7(sans)</td><td class="td_pp">10(sans)</td><td class="td_pp">9(sans)</td><td class="td_pp">11(pol)</td></tr>
+<tr><th>Thu</th><td class="td_pp">9(sst)</td><td class="td_pp">11(pol)</td><td class="td_pp">6(sans)</td><td class="td_pp">8(sans)</td><td>---</td><td class="td_pp">7(sans)</td><td class="td_pp">10(sans)</td><td class="td_pp">9(sans)</td><td class="td_pp">10(he)</td></tr>
+<tr><th>Fri</th><td class="td_pp">9(sst)</td><td class="td_pp">11(pol)</td><td class="td_pp">6(sans)</td><td class="td_pp">8(sans)</td><td>---</td><td class="td_pp">7(sans)</td><td class="td_pp">10(sans)</td><td class="td_pp">9(sans)</td><td class="td_pp">10(raj)</td></tr>
+<tr><th>Sat</th><td class="td_pp">9(sst)</td><td class="td_pp">11(pol)</td><td class="td_pp">6(sans)</td><td class="td_pp">8(sans)</td><td>---</td><td class="td_pp">7(sans)</td><td class="td_pp">10(supw)</td><td class="td_pp">9(supw)</td><td class="td_pp">10(raj)</td></tr>
+</table>
+<br>
+</div>
+<div class="printx" >
+Teacher : Swarnlata G	
+<table><tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+
+<tr><th>Mon</th><td class="td_pp">11(eng)</td><td class="td_pp">7(eng)</td><td class="td_pp">10(eng)</td><td class="td_pp">12(eng)</td><td>---</td><td class="td_pp">9(eng)</td><td class="td_pp">8(eng)</td><td class="td_pp">6(eng)</td><td class="td_pp">9(it)</td></tr>
+<tr><th>Tue</th><td class="td_pp">11(eng)</td><td class="td_pp">7(eng)</td><td class="td_pp">10(eng)</td><td class="td_pp">12(eng)</td><td>---</td><td class="td_pp">9(eng)</td><td class="td_pp">8(eng)</td><td class="td_pp">6(eng)</td><td class="td_pp">9(it)</td></tr>
+<tr><th>Wed</th><td class="td_pp">11(eng)</td><td class="td_pp">7(eng)</td><td class="td_pp">10(eng)</td><td class="td_pp">12(eng)</td><td>---</td><td class="td_pp">9(eng)</td><td class="td_pp">8(eng)</td><td class="td_pp">6(eng)</td><td class="td_pp">9(he)</td></tr>
+<tr><th>Thu</th><td class="td_pp">11(eng)</td><td class="td_pp">7(eng)</td><td class="td_pp">10(eng)</td><td class="td_pp">12(eng)</td><td>---</td><td class="td_pp">9(eng)</td><td class="td_pp">8(eng)</td><td class="td_pp">6(eng)</td><td class="td_pp">9(he)</td></tr>
+<tr><th>Fri</th><td class="td_pp">11(eng)</td><td class="td_pp">7(eng)</td><td class="td_pp">10(eng)</td><td class="td_pp">12(eng)</td><td>---</td><td class="td_pp">9(eng)</td><td class="td_pp">8(eng)</td><td class="td_pp">6(eng)</td><td class="td_pp">9(raj)</td></tr>
+<tr><th>Sat</th><td class="td_pp">11(eng)</td><td class="td_pp">7(eng)</td><td class="td_pp">10(eng)</td><td class="td_pp">12(eng)</td><td>---</td><td class="td_pp">9(eng)</td><td class="td_pp">8(eng)</td><td class="td_pp">6(eng)</td><td class="td_pp">9(raj)</td></tr>
+</table>
+<br>
+</div>
+<div class="printx" >
+Teacher : Anupama G	
+<table><tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+
+<tr><th>Mon</th><td class="td_pp">10(maths)</td><td class="td_pp">9(maths)</td><td class="td_pp">8(sst)</td><td class="td_pp">null</td><td>---</td><td class="td_pp">6(maths)</td><td class="td_pp">11(raj)</td><td class="td_pp">null</td><td class="td_pp">8(diag)</td></tr>
+<tr><th>Tue</th><td class="td_pp">10(maths)</td><td class="td_pp">9(maths)</td><td class="td_pp">8(sst)</td><td class="td_pp">null</td><td>---</td><td class="td_pp">6(maths)</td><td class="td_pp">11(supw)</td><td class="td_pp">null</td><td class="td_pp">8(diag)</td></tr>
+<tr><th>Wed</th><td class="td_pp">10(maths)</td><td class="td_pp">9(maths)</td><td class="td_pp">8(sst)</td><td class="td_pp">null</td><td>---</td><td class="td_pp">6(maths)</td><td class="td_pp">9(maths)</td><td class="td_pp">10(maths)</td><td class="td_pp">8(diag)</td></tr>
+<tr><th>Thu</th><td class="td_pp">10(maths)</td><td class="td_pp">9(maths)</td><td class="td_pp">8(sst)</td><td class="td_pp">null</td><td>---</td><td class="td_pp">6(maths)</td><td class="td_pp">9(maths)</td><td class="td_pp">10(maths)</td><td class="td_pp">8(diag)</td></tr>
+<tr><th>Fri</th><td class="td_pp">10(maths)</td><td class="td_pp">9(maths)</td><td class="td_pp">8(sst)</td><td class="td_pp">null</td><td>---</td><td class="td_pp">6(maths)</td><td class="td_pp">9(sst)</td><td class="td_pp">10(sst)</td><td class="td_pp">8(diag)</td></tr>
+<tr><th>Sat</th><td class="td_pp">10(maths)</td><td class="td_pp">9(maths)</td><td class="td_pp">8(sst)</td><td class="td_pp">null</td><td>---</td><td class="td_pp">6(maths)</td><td class="td_pp">9(sst)</td><td class="td_pp">10(sst)</td><td class="td_pp">8(lib)</td></tr>
+</table>
+<br>
+</div>
+<div class="printx" >
+Teacher : Banwari G	
+<table><tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+
+<tr><th>Mon</th><td class="td_pp">8(maths)</td><td class="td_pp">8(sci)</td><td class="td_pp">7(maths)</td><td class="td_pp">6(sci)</td><td>---</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">7(he)</td><td class="td_pp">6(diag)</td></tr>
+<tr><th>Tue</th><td class="td_pp">8(maths)</td><td class="td_pp">8(sci)</td><td class="td_pp">7(maths)</td><td class="td_pp">6(sci)</td><td>---</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">7(he)</td><td class="td_pp">6(diag)</td></tr>
+<tr><th>Wed</th><td class="td_pp">8(maths)</td><td class="td_pp">8(sci)</td><td class="td_pp">7(maths)</td><td class="td_pp">6(sci)</td><td>---</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">7(diag)</td><td class="td_pp">6(diag)</td></tr>
+<tr><th>Thu</th><td class="td_pp">8(maths)</td><td class="td_pp">8(sci)</td><td class="td_pp">7(maths)</td><td class="td_pp">6(sci)</td><td>---</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">7(diag)</td><td class="td_pp">6(diag)</td></tr>
+<tr><th>Fri</th><td class="td_pp">8(maths)</td><td class="td_pp">8(sci)</td><td class="td_pp">7(maths)</td><td class="td_pp">6(sci)</td><td>---</td><td class="td_pp">8(he)</td><td class="td_pp">6(he)</td><td class="td_pp">7(diag)</td><td class="td_pp">6(diag)</td></tr>
+<tr><th>Sat</th><td class="td_pp">8(maths)</td><td class="td_pp">8(sci)</td><td class="td_pp">7(maths)</td><td class="td_pp">6(sci)</td><td>---</td><td class="td_pp">8(he)</td><td class="td_pp">6(he)</td><td class="td_pp">7(diag)</td><td class="td_pp">6(lib)</td></tr>
+</table>
+<br>
+</div>
+<div class="printx" >
+Teacher : Mosami G	
+<table><tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+
+<tr><th>Mon</th><td class="td_pp">6(sst)</td><td class="td_pp">6(hindi)</td><td class="td_pp">9(hindi)</td><td class="td_pp">10(sst)</td><td>---</td><td class="td_pp">10(hindi)</td><td class="td_pp">7(sst)</td><td class="td_pp">8(hindi)</td><td class="td_pp">7(hindi)</td></tr>
+<tr><th>Tue</th><td class="td_pp">6(sst)</td><td class="td_pp">6(hindi)</td><td class="td_pp">9(hindi)</td><td class="td_pp">10(sst)</td><td>---</td><td class="td_pp">10(hindi)</td><td class="td_pp">7(sst)</td><td class="td_pp">8(hindi)</td><td class="td_pp">7(hindi)</td></tr>
+<tr><th>Wed</th><td class="td_pp">6(sst)</td><td class="td_pp">6(hindi)</td><td class="td_pp">9(hindi)</td><td class="td_pp">10(sst)</td><td>---</td><td class="td_pp">10(hindi)</td><td class="td_pp">7(sst)</td><td class="td_pp">8(hindi)</td><td class="td_pp">7(hindi)</td></tr>
+<tr><th>Thu</th><td class="td_pp">6(sst)</td><td class="td_pp">6(hindi)</td><td class="td_pp">9(hindi)</td><td class="td_pp">10(sst)</td><td>---</td><td class="td_pp">10(hindi)</td><td class="td_pp">7(sst)</td><td class="td_pp">8(hindi)</td><td class="td_pp">7(hindi)</td></tr>
+<tr><th>Fri</th><td class="td_pp">6(sst)</td><td class="td_pp">6(hindi)</td><td class="td_pp">9(hindi)</td><td class="td_pp">10(sst)</td><td>---</td><td class="td_pp">10(hindi)</td><td class="td_pp">7(sst)</td><td class="td_pp">8(hindi)</td><td class="td_pp">7(hindi)</td></tr>
+<tr><th>Sat</th><td class="td_pp">6(sst)</td><td class="td_pp">6(hindi)</td><td class="td_pp">9(hindi)</td><td class="td_pp">10(sst)</td><td>---</td><td class="td_pp">10(hindi)</td><td class="td_pp">7(sst)</td><td class="td_pp">8(hindi)</td><td class="td_pp">7(hindi)</td></tr>
+</table>
+<br>
+</div>
+<div class="printx" >
+Teacher : Shabnam G	
+<table><tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+
+<tr><th>Mon</th><td class="td_pp">5(env)</td><td class="td_pp">3(hindi)</td><td class="td_pp">5(hindi)</td><td class="td_pp">5(hindi)</td><td>---</td><td class="td_pp">5(evs)</td><td class="td_pp">3(hindi)</td><td class="td_pp">3(evs)</td><td class="td_pp">5(evs)</td></tr>
+<tr><th>Tue</th><td class="td_pp">5(env)</td><td class="td_pp">3(hindi)</td><td class="td_pp">5(hindi)</td><td class="td_pp">5(hindi)</td><td>---</td><td class="td_pp">5(evs)</td><td class="td_pp">3(hindi)</td><td class="td_pp">3(evs)</td><td class="td_pp">5(evs)</td></tr>
+<tr><th>Wed</th><td class="td_pp">5(env)</td><td class="td_pp">3(hindi)</td><td class="td_pp">5(hindi)</td><td class="td_pp">5(hindi)</td><td>---</td><td class="td_pp">5(evs)</td><td class="td_pp">3(hindi)</td><td class="td_pp">3(evs)</td><td class="td_pp">5(evs)</td></tr>
+<tr><th>Thu</th><td class="td_pp">5(env)</td><td class="td_pp">3(hindi)</td><td class="td_pp">5(hindi)</td><td class="td_pp">5(hindi)</td><td>---</td><td class="td_pp">5(evs)</td><td class="td_pp">3(hindi)</td><td class="td_pp">3(evs)</td><td class="td_pp">3(evs)</td></tr>
+<tr><th>Fri</th><td class="td_pp">5(env)</td><td class="td_pp">3(hindi)</td><td class="td_pp">5(hindi)</td><td class="td_pp">5(hindi)</td><td>---</td><td class="td_pp">5(evs)</td><td class="td_pp">3(hindi)</td><td class="td_pp">3(evs)</td><td class="td_pp">3(evs)</td></tr>
+<tr><th>Sat</th><td class="td_pp">5(env)</td><td class="td_pp">3(hindi)</td><td class="td_pp">5(hindi)</td><td class="td_pp">5(hindi)</td><td>---</td><td class="td_pp">5(evs)</td><td class="td_pp">3(hindi)</td><td class="td_pp">3(evs)</td><td class="td_pp">3(evs)</td></tr>
+</table>
+<br>
+</div>
+<div class="printx" >
+Teacher : Nusrat G	
+<table><tr><th>Day\Period</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Break</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+
+<tr><th>Mon</th><td class="td_pp">3(eng)</td><td class="td_pp">5(eng)</td><td class="td_pp">3(maths)</td><td class="td_pp">3(maths)</td><td>---</td><td class="td_pp">3(he)</td><td class="td_pp">5(maths)</td><td class="td_pp">11(supw)</td><td class="td_pp">3(arts)</td></tr>
+<tr><th>Tue</th><td class="td_pp">3(eng)</td><td class="td_pp">5(eng)</td><td class="td_pp">3(maths)</td><td class="td_pp">3(maths)</td><td>---</td><td class="td_pp">3(he)</td><td class="td_pp">5(maths)</td><td class="td_pp">11(supw)</td><td class="td_pp">3(arts)</td></tr>
+<tr><th>Wed</th><td class="td_pp">3(eng)</td><td class="td_pp">5(eng)</td><td class="td_pp">3(maths)</td><td class="td_pp">3(maths)</td><td>---</td><td class="td_pp">3(he)</td><td class="td_pp">5(maths)</td><td class="td_pp">null</td><td class="td_pp">3(arts)</td></tr>
+<tr><th>Thu</th><td class="td_pp">3(eng)</td><td class="td_pp">5(eng)</td><td class="td_pp">3(maths)</td><td class="td_pp">3(he)</td><td>---</td><td class="td_pp">3(arts)</td><td class="td_pp">5(maths)</td><td class="td_pp">null</td><td class="td_pp">5(maths)</td></tr>
+<tr><th>Fri</th><td class="td_pp">3(eng)</td><td class="td_pp">5(eng)</td><td class="td_pp">3(maths)</td><td class="td_pp">7(diag)</td><td>---</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">5(maths)</td></tr>
+<tr><th>Sat</th><td class="td_pp">3(eng)</td><td class="td_pp">5(eng)</td><td class="td_pp">3(maths)</td><td class="td_pp">7(lib)</td><td>---</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">null</td><td class="td_pp">5(maths)</td></tr>
+</table>
+<br>
+</div>

@@ -1,0 +1,341 @@
+<style>
+	
+	table
+	{
+		border:1px solid black ;
+		border-collapse: collapse ;
+		
+	}
+	th,td
+	{
+		border:1px solid black ;
+		border-collapse: collapse ;
+		padding: 5px;
+		text-align: center ;
+	}
+	table {
+	  page-break-inside: avoid;
+	  break-inside: avoid;      
+	}
+
+	tr, td, th {
+	  page-break-inside: avoid; 
+	  break-inside: avoid;
+	}
+	.printx{
+	  page-break-inside: avoid; 
+	  break-inside: avoid;
+	}
+	.td_pp
+	{
+		width:100px;
+	}
+	.td_pp2
+	{
+		width : 130 ;
+	}
+	tr:nth-child(even)
+	{
+		background-color: #dddddd ;
+	}
+	.tt_edit_one_subject
+	{
+		width:50%;
+	}
+	.tt_edit_one_teacher
+	{
+		width:100%;
+	}
+	.tt_edit_one_eclasses
+	{
+		width:50%;
+	}
+	
+	</style>
+	
+	<script>
+     function printDiv(divId) {
+     var printContents = document.getElementById(divId).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+	</script>
+	
+
+
+<script>
+
+function save_json_data()
+{
+	
+	var class_info={};
+	class_info['total']=9;
+class_info[0]="12";
+class_info[1]="11";
+class_info[2]="10";
+class_info[3]="9";
+class_info[4]="8";
+class_info[5]="7";
+class_info[6]="6";
+class_info[7]="5";
+class_info[8]="3";
+	
+	var obj={};
+	obj['total']=0;
+	var errored=0;
+	for(var i=0; i < class_info['total'] ; i++)
+	{
+		//obj.total++;
+		for(var k=1; k <= 8 ; k++)
+		for(var j=1; j <= 6 ; j++)
+		{
+			
+			var ele_subject = document.getElementById("tt_edit_one_subject_"+class_info[i]+"_"+k+"_"+j);
+			var ele_teacher = document.getElementById("tt_edit_one_teacher_"+class_info[i]+"_"+k+"_"+j);
+			var ele_eclasses = document.getElementById("tt_edit_one_eclasses_"+class_info[i]+"_"+k+"_"+j);
+			if(ele_subject.value && ele_teacher.value && ele_eclasses.value)
+			{
+				obj[obj['total']]={};
+				//obj[obj['total']]['value']=class_info[i]+"_"+ele.value+"_"+k+"_"+j;
+				
+				obj[obj['total']]['class']=class_info[i];
+				obj[obj['total']]['classes']=ele_eclasses.value;
+				
+				obj[obj['total']]['day']=j;
+				obj[obj['total']]['period']=k;
+				obj[obj['total']]['subject']=ele_subject.value;
+				obj[obj['total']]['teacher']=ele_teacher.value;
+				
+				obj['total']++;
+			}
+			
+			if(ele_subject.value || ele_teacher.value)
+			if(ele_subject.value && ele_teacher.value)	
+			{
+			}
+			else
+			{
+				if( errored==0)
+					alert("data err class:"+class_info[i]+" period:"+k+" day:"+j);
+				 errored=1;
+			}
+		}
+	}
+
+	var json_string=JSON.stringify(obj);
+	
+	fetch('save_tt.php', {
+	  method: 'POST',
+	  headers: {
+	    'Content-Type': 'application/json'
+	  },
+	  body: json_string
+	})
+	.then(response => response.text()) // or response.json() if the server returns JSON
+	.then(data => {
+	  console.log('Server response:', data);
+	})
+	.catch(error => {
+	  console.error('Error:', error);
+	});
+
+
+}
+
+
+function copy_tt_data_single(w_class, w_period)
+{
+	//console.log(w_class+":"+w_period);
+	//return;
+	var class_info={};
+	class_info['total']=9;
+class_info[0]="12";
+class_info[1]="11";
+class_info[2]="10";
+class_info[3]="9";
+class_info[4]="8";
+class_info[5]="7";
+class_info[6]="6";
+class_info[7]="5";
+class_info[8]="3";
+	
+	var obj={};
+	obj['total']=0;
+	var errored=0;
+	//for(var i=0; i < class_info['total'] ; i++)
+	//{
+		//obj.total++;
+		//for(var k=1; k <= 8 ; k++)
+		
+		//var ele_subject = document.getElementById("tt_edit_one_subject_"+w_class+"_"+w_period+"_"+1);
+		//var ele_teacher = document.getElementById("tt_edit_one_teacher_"+w_class+"_"+w_period+"_"+1);
+		
+		var cp_subject="";
+		var cp_teacher="";
+		var cp_eclasses="";
+		//if(ele_subject && ele_teacher && ele_subject.value && ele_teacher.value)
+		//{
+		//	cp_subject=ele_subject.value;
+		//	cp_teacher=ele_teacher.value;
+		//}
+		for(var j=1; j <= 6 ; j++)
+		{
+			var ele_subject = document.getElementById("tt_edit_one_subject_"+w_class+"_"+w_period+"_"+j);
+			var ele_teacher = document.getElementById("tt_edit_one_teacher_"+w_class+"_"+w_period+"_"+j);
+			var ele_eclasses = document.getElementById("tt_edit_one_eclasses_"+w_class+"_"+w_period+"_"+j);
+			
+			if(ele_subject.value != "" || ele_teacher.value != "" )
+			{
+				cp_subject=ele_subject.value;
+				cp_teacher=ele_teacher.value;
+				cp_eclasses=ele_eclasses.value;
+			}
+			ele_subject.value=cp_subject;
+			ele_teacher.value=cp_teacher;
+			ele_eclasses.value=cp_eclasses;
+			
+		}
+		/*
+		if(ele_subject.value && ele_teacher.value)
+		for(var j=1; j <= 6 ; j++)
+		{
+			//document.getElementById("tt_edit_one_subject_"+class_info[w_class]+"_"+w_period+"_"+j)="khdka";
+			
+		}
+		*/
+	//}
+
+
+}
+function clean_tt_data_single(w_class, w_period)
+{
+	//console.log(w_class+":"+w_period);
+	//return;
+	var class_info={};
+	class_info['total']=9;
+class_info[0]="12";
+class_info[1]="11";
+class_info[2]="10";
+class_info[3]="9";
+class_info[4]="8";
+class_info[5]="7";
+class_info[6]="6";
+class_info[7]="5";
+class_info[8]="3";
+	
+	var obj={};
+	obj['total']=0;
+	var errored=0;
+	//for(var i=0; i < class_info['total'] ; i++)
+	//{
+		//obj.total++;
+		//for(var k=1; k <= 8 ; k++)
+		
+		
+		var cp_subject="";
+		var cp_teacher="";
+		
+		for(var j=1; j <= 6 ; j++)
+		{
+			document.getElementById("tt_edit_one_subject_"+w_class+"_"+w_period+"_"+j).value=cp_subject;
+			document.getElementById("tt_edit_one_teacher_"+w_class+"_"+w_period+"_"+j).value=cp_teacher;
+			document.getElementById("tt_edit_one_eclasses_"+w_class+"_"+w_period+"_"+j).value=w_class;
+			
+		}
+		/*
+		if(ele_subject.value && ele_teacher.value)
+		for(var j=1; j <= 6 ; j++)
+		{
+			//document.getElementById("tt_edit_one_subject_"+class_info[w_class]+"_"+w_period+"_"+j)="khdka";
+			
+		}
+		*/
+	//}
+
+
+}
+function clean_tt_data()
+{
+	//console.log(w_class+":"+w_period);
+	//return;
+	var class_info={};
+	class_info['total']=9;
+class_info[0]="12";
+class_info[1]="11";
+class_info[2]="10";
+class_info[3]="9";
+class_info[4]="8";
+class_info[5]="7";
+class_info[6]="6";
+class_info[7]="5";
+class_info[8]="3";
+	
+	var obj={};
+	obj['total']=0;
+	var errored=0;
+	for(var i=0; i < class_info['total'] ; i++)
+	{
+		//obj.total++;
+		for(var k=1; k <= 8 ; k++)
+		for(var j=1; j <= 6 ; j++)
+		{
+			document.getElementById("tt_edit_one_subject_"+class_info[i]+"_"+k+"_"+j).value="";
+			document.getElementById("tt_edit_one_teacher_"+class_info[i]+"_"+k+"_"+j).value="";
+			document.getElementById("tt_edit_one_eclasses_"+class_info[i]+"_"+k+"_"+j).value=class_info[i];
+			
+		}
+	}
+
+
+}
+
+</script>
+
+
+Printing Class Table : <button onclick=printDiv('mg_class') >View/Print</button> <a href="index_raw.html">Detailed View</a>
+<br>
+<div id="mg_class" >
+GSSS BHERUDAN SHET
+<table><tr><th> 		<span>Summer</span><br>
+  		<span style="display:block; border-top: 2px solid black; width: 4em; margin: 2px auto;"></span>
+  		<span>Winter</span>
+	</th><th>12:50 - 13:30<br>1<br>12:55 - 13:30</th><th>13:30 - 14:05<br>2<br>13:30 - 14:00</th><th>14:05 - 14:40<br>3<br>14:00 - 14:30</th><th>14:40 - 15:15<br>4<br>14:30 - 15:00</th><th>15:15 - 15:40<br>Break<br>15:00 - 15:25</th><th>15:40 - 16:15<br>5<br>15:25 - 16:00</th><th>16:15 - 16:50<br>6<br>16:00 - 16:30</th><th>16:50 - 17:25<br>7<br>16:30 - 17:00</th><th>17:25 - 18:00<br>8<br>17:00 - 17:30</th></tr><tr>
+<tr><th>12th</th><td class="td_pp2">geo(pri)(123456)</td><td class="td_pp2">pol(pri)(123456)</td><td class="td_pp2">hin-sa(pri)(123456)</td><td class="td_pp2">eng(swa)(123456)<td>-/-</td></td><td class="td_pp2">hindi(shd)(123456)</td><td class="td_pp2">geo(pri)(12345)<br>pol(pri)(6)</td><td class="td_pp2">pol(pri)(1234)<br>hin-sa(pri)(56)</td><td class="td_pp2">hin-sa(pri)(123)<br>raj(shd)(456)</td></tr>
+<tr><th>11th</th><td class="td_pp2">eng(swa)(123456)</td><td class="td_pp2">pol(snt)(123456)</td><td class="td_pp2">hindi(shd)(123456)</td><td class="td_pp2">geo(pri)(123456)<td>-/-</td></td><td class="td_pp2">hin-sa(pri)(123456)</td><td class="td_pp2">raj(anu)(1)<br>supw(anu)(2)<br>geo(shd)(3)<br>pol(shd)(4)<br>hin-sa(shd)(56)</td><td class="td_pp2">supw(nsrt)(12)<br>hin-sa(shd)(34)<br>raj(shd)(56)</td><td class="td_pp2">pol(snt)(123)<br>geo(pri)(456)</td></tr>
+<tr><th>10th</th><td class="td_pp2">maths(anu)(123456)</td><td class="td_pp2">sci(shd)(123456)</td><td class="td_pp2">eng(swa)(123456)</td><td class="td_pp2">sst(msm)(123456)<td>-/-</td></td><td class="td_pp2">hindi(msm)(123456)</td><td class="td_pp2">sans(snt)(12345)<br>supw(snt)(6)</td><td class="td_pp2">sci(shd)(12)<br>maths(anu)(34)<br>sst(anu)(56)</td><td class="td_pp2">it(shd)(12)<br>he(shd)(3)<br>he(snt)(4)<br>raj(snt)(56)</td></tr>
+<tr><th>9th</th><td class="td_pp2">sst(snt)(123456)</td><td class="td_pp2">maths(anu)(123456)</td><td class="td_pp2">hindi(msm)(123456)</td><td class="td_pp2">sci(shd)(123456)<td>-/-</td></td><td class="td_pp2">eng(swa)(123456)</td><td class="td_pp2">sci(shd)(12)<br>maths(anu)(34)<br>sst(anu)(56)</td><td class="td_pp2">sans(snt)(12345)<br>supw(snt)(6)</td><td class="td_pp2">it(swa)(12)<br>he(swa)(34)<br>raj(swa)(56)</td></tr>
+<tr><th>8th</th><td class="td_pp2">maths(bnv)(123456)</td><td class="td_pp2">sci(bnv)(123456)</td><td class="td_pp2">sst(anu)(123456)</td><td class="td_pp2">sans(snt)(123456)<td>-/-</td></td><td class="td_pp2">supw(ptb)(12)<br>arts(ptb)(34)<br>he(bnv)(56)</td><td class="td_pp2">eng(swa)(123456)</td><td class="td_pp2">hindi(msm)(123456)</td><td class="td_pp2">diag(anu)(12345)<br>lib(anu)(6)</td></tr>
+<tr><th>7th</th><td class="td_pp2">sci(shd)(123456)</td><td class="td_pp2">eng(swa)(123456)</td><td class="td_pp2">maths(bnv)(123456)</td><td class="td_pp2">supw(ptb)(12)<br>arts(ptb)(34)<br>diag(nsrt)(5)<br>lib(nsrt)(6)<td>-/-</td></td><td class="td_pp2">sans(snt)(123456)</td><td class="td_pp2">sst(msm)(123456)</td><td class="td_pp2">he(bnv)(12)<br>diag(bnv)(3456)</td><td class="td_pp2">hindi(msm)(123456)</td></tr>
+<tr><th>6th</th><td class="td_pp2">sst(msm)(123456)</td><td class="td_pp2">hindi(msm)(123456)</td><td class="td_pp2">sans(snt)(123456)</td><td class="td_pp2">sci(bnv)(123456)<td>-/-</td></td><td class="td_pp2">maths(anu)(123456)</td><td class="td_pp2">supw(ptb)(12)<br>arts(ptb)(34)<br>he(bnv)(56)</td><td class="td_pp2">eng(swa)(123456)</td><td class="td_pp2">diag(bnv)(12345)<br>lib(bnv)(6)</td></tr>
+<tr><th>5+4</th><td class="td_pp2">env(sbnm)(123456)</td><td class="td_pp2">eng(nsrt)(123456)</td><td class="td_pp2">hindi(sbnm)(123456)</td><td class="td_pp2">hindi(sbnm)(123456)<td>-/-</td></td><td class="td_pp2">evs(sbnm)(123456)</td><td class="td_pp2">maths(nsrt)(1234)<br>supw(ptb)(56)</td><td class="td_pp2">supw(ptb)(12)<br>arts(ptb)(3456)</td><td class="td_pp2">evs(sbnm)(123)<br>maths(nsrt)(456)</td></tr>
+<tr><th>3+2+1</th><td class="td_pp2">eng(nsrt)(123456)</td><td class="td_pp2">hindi(sbnm)(123456)</td><td class="td_pp2">maths(nsrt)(123456)</td><td class="td_pp2">maths(nsrt)(123)<br>he(nsrt)(4)<br>supw(ptb)(56)<td>-/-</td></td><td class="td_pp2">he(nsrt)(123)<br>arts(nsrt)(4)<br>supw(ptb)(56)</td><td class="td_pp2">hindi(sbnm)(123456)</td><td class="td_pp2">evs(sbnm)(123456)</td><td class="td_pp2">arts(nsrt)(123)<br>evs(sbnm)(456)</td></tr>
+</table>
+<br>
+</div>
+Printing Teacher Table : <button onclick=printDiv('mg_teacher') >View/Print</button> <a href="index_raw.html">Detailed View</a>
+<br>
+<div id="mg_teacher" >
+GSSS BHERUDAN SHET
+<table><tr><th> 		<span>Summer</span><br>
+  		<span style="display:block; border-top: 2px solid black; width: 4em; margin: 2px auto;"></span>
+  		<span>Winter</span>
+	</th><th>12:50 - 13:30<br>1<br>12:55 - 13:30</th><th>13:30 - 14:05<br>2<br>13:30 - 14:00</th><th>14:05 - 14:40<br>3<br>14:00 - 14:30</th><th>14:40 - 15:15<br>4<br>14:30 - 15:00</th><th>15:15 - 15:40<br>Break<br>15:00 - 15:25</th><th>15:40 - 16:15<br>5<br>15:25 - 16:00</th><th>16:15 - 16:50<br>6<br>16:00 - 16:30</th><th>16:50 - 17:25<br>7<br>16:30 - 17:00</th><th>17:25 - 18:00<br>8<br>17:00 - 17:30</th></tr><tr>
+
+<tr><th>Pratibha G<br>(ptb)[24]</th><td class="td_pp2">OW</td><td class="td_pp2">OW</td><td class="td_pp2">OW</td><td class="td_pp2">7(supw)(12)<br>7(arts)(34)<br>3(supw)(56)<td>-/-</td></td><td class="td_pp2">8(supw)(12)<br>8(arts)(34)<br>3(supw)(56)</td><td class="td_pp2">6(supw)(12)<br>6(arts)(34)<br>5(supw)(56)</td><td class="td_pp2">5(supw)(12)<br>5(arts)(3456)</td><td class="td_pp2">OW</td></tr>
+<tr><th>Sharda G<br>(shd)[48]</th><td class="td_pp2">7(sci)(123456)</td><td class="td_pp2">10(sci)(123456)</td><td class="td_pp2">11(hindi)(123456)</td><td class="td_pp2">9(sci)(123456)<td>-/-</td></td><td class="td_pp2">12(hindi)(123456)</td><td class="td_pp2">9(sci)(12)<br>11(geo)(3)<br>11(pol)(4)<br>11(hin-sa)(56)</td><td class="td_pp2">10(sci)(12)<br>11(hin-sa)(34)<br>11(raj)(56)</td><td class="td_pp2">10(it)(12)<br>10(he)(3)<br>12(raj)(456)</td></tr>
+<tr><th>Priyanka G<br>(pri)[48]</th><td class="td_pp2">12(geo)(123456)</td><td class="td_pp2">12(pol)(123456)</td><td class="td_pp2">12(hin-sa)(123456)</td><td class="td_pp2">11(geo)(123456)<td>-/-</td></td><td class="td_pp2">11(hin-sa)(123456)</td><td class="td_pp2">12(geo)(12345)<br>12(pol)(6)</td><td class="td_pp2">12(pol)(1234)<br>12(hin-sa)(56)</td><td class="td_pp2">12(hin-sa)(123)<br>11(geo)(456)</td></tr>
+<tr><th>Santosh G<br>(snt)[48]</th><td class="td_pp2">9(sst)(123456)</td><td class="td_pp2">11(pol)(123456)</td><td class="td_pp2">6(sans)(123456)</td><td class="td_pp2">8(sans)(123456)<td>-/-</td></td><td class="td_pp2">7(sans)(123456)</td><td class="td_pp2">10(sans)(12345)<br>10(supw)(6)</td><td class="td_pp2">9(sans)(12345)<br>9(supw)(6)</td><td class="td_pp2">11(pol)(123)<br>10(he)(4)<br>10(raj)(56)</td></tr>
+<tr><th>Swarnlata G<br>(swa)[48]</th><td class="td_pp2">11(eng)(123456)</td><td class="td_pp2">7(eng)(123456)</td><td class="td_pp2">10(eng)(123456)</td><td class="td_pp2">12(eng)(123456)<td>-/-</td></td><td class="td_pp2">9(eng)(123456)</td><td class="td_pp2">8(eng)(123456)</td><td class="td_pp2">6(eng)(123456)</td><td class="td_pp2">9(it)(12)<br>9(he)(34)<br>9(raj)(56)</td></tr>
+<tr><th>Anupama G<br>(anu)[40]</th><td class="td_pp2">10(maths)(123456)</td><td class="td_pp2">9(maths)(123456)</td><td class="td_pp2">8(sst)(123456)</td><td class="td_pp2">OW<td>-/-</td></td><td class="td_pp2">6(maths)(123456)</td><td class="td_pp2">11(raj)(1)<br>11(supw)(2)<br>9(maths)(34)<br>9(sst)(56)</td><td class="td_pp2">10(maths)(34)<br>10(sst)(56)</td><td class="td_pp2">8(diag)(12345)<br>8(lib)(6)</td></tr>
+<tr><th>Banwari G<br>(bnv)[40]</th><td class="td_pp2">8(maths)(123456)</td><td class="td_pp2">8(sci)(123456)</td><td class="td_pp2">7(maths)(123456)</td><td class="td_pp2">6(sci)(123456)<td>-/-</td></td><td class="td_pp2">8(he)(56)</td><td class="td_pp2">6(he)(56)</td><td class="td_pp2">7(he)(12)<br>7(diag)(3456)</td><td class="td_pp2">6(diag)(12345)<br>6(lib)(6)</td></tr>
+<tr><th>Mosami G<br>(msm)[48]</th><td class="td_pp2">6(sst)(123456)</td><td class="td_pp2">6(hindi)(123456)</td><td class="td_pp2">9(hindi)(123456)</td><td class="td_pp2">10(sst)(123456)<td>-/-</td></td><td class="td_pp2">10(hindi)(123456)</td><td class="td_pp2">7(sst)(123456)</td><td class="td_pp2">8(hindi)(123456)</td><td class="td_pp2">7(hindi)(123456)</td></tr>
+<tr><th>Shabnam G<br>(sbnm)[48]</th><td class="td_pp2">5(env)(123456)</td><td class="td_pp2">3(hindi)(123456)</td><td class="td_pp2">5(hindi)(123456)</td><td class="td_pp2">5(hindi)(123456)<td>-/-</td></td><td class="td_pp2">5(evs)(123456)</td><td class="td_pp2">3(hindi)(123456)</td><td class="td_pp2">3(evs)(123456)</td><td class="td_pp2">5(evs)(123)<br>3(evs)(456)</td></tr>
+<tr><th>Nusrat G<br>(nsrt)[40]</th><td class="td_pp2">3(eng)(123456)</td><td class="td_pp2">5(eng)(123456)</td><td class="td_pp2">3(maths)(123456)</td><td class="td_pp2">3(maths)(123)<br>3(he)(4)<br>7(diag)(5)<br>7(lib)(6)<td>-/-</td></td><td class="td_pp2">3(he)(123)<br>3(arts)(4)</td><td class="td_pp2">5(maths)(1234)</td><td class="td_pp2">11(supw)(12)</td><td class="td_pp2">3(arts)(123)<br>5(maths)(456)</td></tr>
+</table>
+<br>
+OW = 'School Official Work'</div>
